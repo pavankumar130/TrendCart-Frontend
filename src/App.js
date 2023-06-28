@@ -72,6 +72,7 @@ const App = () => {
           <Route path="order-payment" element={<OrderPayment />} />
           <Route path="customers" element={<Customers />} />
         </Route>
+
         {/* public links */}
         {/* Products */}
         <Route path="/" element={<HomePage />} />

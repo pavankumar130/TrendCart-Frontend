@@ -89,3 +89,7 @@ https://github.com/sweetalert2/sweetalert2-react-content
 ### React loading
 
 https://www.npmjs.com/package/react-loading
+
+### React-select
+
+https://www.npmjs.com/package/react-select

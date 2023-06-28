@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import baseURL from '../../../utils/baseURL'
+import { resetErrAction } from '../globalActions/globalActions'
 
 // initial state
 const initialState = {
@@ -12,7 +13,9 @@ const initialState = {
   useAuth: {
     loading: false,
     error: null,
-    userInfo: {},
+    userInfo: localStorage.getItem('userInfo')
+      ? JSON.parse(localStorage.getItem('userInfo'))
+      : null,
   },
 }
 
@@ -87,6 +90,10 @@ const userSlice = createSlice({
     builder.addCase(registerUserAction.rejected, (state, action) => {
       state.error = action.payload
       state.loading = false
+    })
+    // reset error action
+    builder.addCase(resetErrAction.pending, (state) => {
+      state.error = null
     })
   },
 })
