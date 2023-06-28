@@ -1,5 +1,10 @@
 import axios from 'axios'
+import { act } from 'react-dom/test-utils'
 import baseURL from '../../../utils/baseURL'
+import {
+  resetErrAction,
+  resetSuccessAction,
+} from '../globalActions/globalActions'
 const { createAsyncThunk, createSlice } = require('@reduxjs/toolkit')
 
 //initalsState
@@ -13,27 +18,28 @@ const initialState = {
   isDelete: false,
 }
 
-//create category action
+//create Category action
 export const createCategoryAction = createAsyncThunk(
   'category/create',
   async (payload, { rejectWithValue, getState, dispatch }) => {
+    console.log(payload)
     try {
-      const { name } = payload
-      // make request
-      // token -authenticate
+      const { name, file } = payload
+      //fromData
+      const formData = new FormData()
+      formData.append('name', name)
+      formData.append('file', file)
+      //Token - Authenticated
       const token = getState()?.users?.useAuth?.userInfo?.token
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
-      // images
-
+      //Images
       const { data } = await axios.post(
         `${baseURL}/categories`,
-        {
-          name,
-        },
+        formData,
         config
       )
       return data
@@ -43,7 +49,7 @@ export const createCategoryAction = createAsyncThunk(
   }
 )
 
-//fetch categories action
+//fetch Categories action
 export const fetchCategoriesAction = createAsyncThunk(
   'category/fetch All',
   async (payload, { rejectWithValue, getState, dispatch }) => {
@@ -55,13 +61,12 @@ export const fetchCategoriesAction = createAsyncThunk(
     }
   }
 )
-
-// slice
+//slice
 const categorySlice = createSlice({
   name: 'categories',
   initialState,
   extraReducers: (builder) => {
-    // create
+    //create
     builder.addCase(createCategoryAction.pending, (state) => {
       state.loading = true
     })
@@ -77,25 +82,31 @@ const categorySlice = createSlice({
       state.error = action.payload
     })
 
-    // fetch all
+    //fetch all
     builder.addCase(fetchCategoriesAction.pending, (state) => {
       state.loading = true
     })
     builder.addCase(fetchCategoriesAction.fulfilled, (state, action) => {
       state.loading = false
       state.categories = action.payload
-      state.isAdded = true
     })
     builder.addCase(fetchCategoriesAction.rejected, (state, action) => {
       state.loading = false
       state.categories = null
-      state.isAdded = false
       state.error = action.payload
+    })
+    //Reset err
+    builder.addCase(resetErrAction.pending, (state, action) => {
+      state.error = null
+    })
+    //Reset success
+    builder.addCase(resetSuccessAction.pending, (state, action) => {
+      state.isAdded = false
     })
   },
 })
 
-// generate the reducer
+//generate the reducer
 const categoryReducer = categorySlice.reducer
 
 export default categoryReducer

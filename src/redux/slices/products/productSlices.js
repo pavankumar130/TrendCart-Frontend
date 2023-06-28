@@ -1,5 +1,9 @@
 import axios from 'axios'
 import baseURL from '../../../utils/baseURL'
+import {
+  resetErrAction,
+  resetSuccessAction,
+} from '../globalActions/globalActions'
 const { createAsyncThunk, createSlice } = require('@reduxjs/toolkit')
 
 //initalsState
@@ -17,7 +21,6 @@ const initialState = {
 export const createProductAction = createAsyncThunk(
   'product/create',
   async (payload, { rejectWithValue, getState, dispatch }) => {
-    console.log(payload)
     try {
       const {
         name,
@@ -66,6 +69,49 @@ export const createProductAction = createAsyncThunk(
   }
 )
 
+//fetch products action
+export const fetchProductsAction = createAsyncThunk(
+  'product/list',
+  async (payload, { rejectWithValue, getState, dispatch }) => {
+    try {
+      const token = getState()?.users?.useAuth?.userInfo?.token
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+
+      const { data } = await axios.get(`${baseURL}/products`, config)
+      return data
+    } catch (error) {
+      return rejectWithValue(error?.response?.data)
+    }
+  }
+)
+
+//fetch product action
+export const fetchProductAction = createAsyncThunk(
+  'product/details',
+  async (productId, { rejectWithValue, getState, dispatch }) => {
+    try {
+      const token = getState()?.users?.useAuth?.userInfo?.token
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+
+      const { data } = await axios.get(
+        `${baseURL}/products/${productId}`,
+        config
+      )
+      return data
+    } catch (error) {
+      return rejectWithValue(error?.response?.data)
+    }
+  }
+)
+
 // slice
 const productSlice = createSlice({
   name: 'products',
@@ -80,11 +126,55 @@ const productSlice = createSlice({
       state.product = action.payload
       state.isAdded = true
     })
+
     builder.addCase(createProductAction.rejected, (state, action) => {
       state.loading = false
       state.product = null
       state.isAdded = false
       state.error = action.payload
+    })
+
+    // fetch all
+    builder.addCase(fetchProductsAction.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(fetchProductsAction.fulfilled, (state, action) => {
+      state.loading = false
+      state.products = action.payload
+      state.isAdded = true
+    })
+
+    builder.addCase(fetchProductsAction.rejected, (state, action) => {
+      state.loading = false
+      state.products = null
+      state.isAdded = false
+      state.error = action.payload
+    })
+
+    // fetch
+    builder.addCase(fetchProductAction.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(fetchProductAction.fulfilled, (state, action) => {
+      state.loading = false
+      state.product = action.payload
+      state.isAdded = true
+    })
+
+    builder.addCase(fetchProductAction.rejected, (state, action) => {
+      state.loading = false
+      state.product = null
+      state.isAdded = false
+      state.error = action.payload
+    })
+
+    // reset error
+    builder.addCase(resetErrAction.pending, (state, action) => {
+      state.error = null
+    })
+    // reset success
+    builder.addCase(resetSuccessAction.pending, (state, action) => {
+      state.isAdded = false
     })
   },
 })

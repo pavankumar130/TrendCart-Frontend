@@ -1,12 +1,21 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { fetchCategoriesAction } from '../../redux/slices/categories/categoriesSlice'
 
 const AllCategories = () => {
+  // dispatch
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCategoriesAction())
+  }, [dispatch])
+
+  // get data from store
   const {
     categories: { categories },
-    loading,
-    error,
-  } = {};
+  } = useSelector((state) => state?.categories)
+  console.log(categories)
 
   return (
     <>
@@ -26,13 +35,14 @@ const AllCategories = () => {
             <div className="min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid m-2  xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
               {categories?.map((category) => (
                 <Link
-                  key={category.name}
-                  to={`/products-filters?category=${category.name}`}
-                  className="relative flex h-80 w-56 flex-col mt-4 overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                  key={category?.name}
+                  to={`/products-filters?category=${category?.name}`}
+                  className="relative flex h-80 w-56 flex-col mt-4 overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                >
                   <span aria-hidden="true" className="absolute inset-0">
                     <img
-                      src={category.image}
-                      alt=""
+                      src={category?.image}
+                      alt={category?.name}
                       className="h-full w-full object-cover object-center"
                     />
                   </span>
@@ -50,7 +60,7 @@ const AllCategories = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default AllCategories;
+export default AllCategories

@@ -1,8 +1,23 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { fetchCategoriesAction } from '../../redux/slices/categories/categoriesSlice'
 
 const HomeCategories = () => {
-  const categoriesToShow = [];
+  // dispatch
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCategoriesAction())
+  }, [dispatch])
+
+  // get data from store
+  const {
+    categories: { categories },
+  } = useSelector((state) => state?.categories)
+  console.log(categories)
+
+  const categoriesToShow = categories?.slice(0, 4)
 
   return (
     <>
@@ -14,7 +29,8 @@ const HomeCategories = () => {
                 <Link
                   key={category.name}
                   to={`/products-filters?category=${category.name}`}
-                  className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                  className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                >
                   <span aria-hidden="true" className="absolute inset-0">
                     <img
                       src={category.image}
@@ -36,7 +52,7 @@ const HomeCategories = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default HomeCategories;
+export default HomeCategories
