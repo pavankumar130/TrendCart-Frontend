@@ -24,7 +24,6 @@ export default function Navbar() {
   const {
     categories: { categories },
   } = useSelector((state) => state?.categories)
-  console.log(categories)
 
   const categoriesToDisplay = categories?.slice(0, 4)
 

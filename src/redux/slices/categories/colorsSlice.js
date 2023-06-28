@@ -1,5 +1,9 @@
 import axios from 'axios'
 import baseURL from '../../../utils/baseURL'
+import {
+  resetErrAction,
+  resetSuccessAction,
+} from '../globalActions/globalActions'
 const { createAsyncThunk, createSlice } = require('@reduxjs/toolkit')
 
 //initalsState
@@ -16,18 +20,16 @@ const initialState = {
 //create color action
 export const createColorAction = createAsyncThunk(
   'color/create',
-  async (payload, { rejectWithValue, getState, dispatch }) => {
+  async (name, { rejectWithValue, getState, dispatch }) => {
     try {
-      const { name } = payload
-      // token -authenticate
+      //Token - Authenticated
       const token = getState()?.users?.useAuth?.userInfo?.token
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
-      // images
-
+      //Images
       const { data } = await axios.post(
         `${baseURL}/colors`,
         {
@@ -44,7 +46,7 @@ export const createColorAction = createAsyncThunk(
 
 //fetch colors action
 export const fetchColorsAction = createAsyncThunk(
-  'colors/fetch All',
+  'colors/fetch-all',
   async (payload, { rejectWithValue, getState, dispatch }) => {
     try {
       const { data } = await axios.get(`${baseURL}/colors`)
@@ -54,15 +56,15 @@ export const fetchColorsAction = createAsyncThunk(
     }
   }
 )
-
-// slice
+//slice
 const colorsSlice = createSlice({
   name: 'brands',
   initialState,
   extraReducers: (builder) => {
-    // create
+    //create
     builder.addCase(createColorAction.pending, (state) => {
       state.loading = true
+      state.isAdded = false
     })
     builder.addCase(createColorAction.fulfilled, (state, action) => {
       state.loading = false
@@ -76,25 +78,34 @@ const colorsSlice = createSlice({
       state.error = action.payload
     })
 
-    // fetch all
+    //fetch all
     builder.addCase(fetchColorsAction.pending, (state) => {
       state.loading = true
+      state.isAdded = false
     })
     builder.addCase(fetchColorsAction.fulfilled, (state, action) => {
       state.loading = false
       state.colors = action.payload
-      state.isAdded = true
     })
     builder.addCase(fetchColorsAction.rejected, (state, action) => {
       state.loading = false
       state.colors = null
-      state.isAdded = false
       state.error = action.payload
+    })
+    //reset error action
+    builder.addCase(resetErrAction.pending, (state, action) => {
+      state.isAdded = false
+      state.error = null
+    })
+    //reset success action
+    builder.addCase(resetSuccessAction.pending, (state, action) => {
+      state.isAdded = false
+      state.error = null
     })
   },
 })
 
-// generate the reducer
+//generate the reducer
 const colorsReducer = colorsSlice.reducer
 
 export default colorsReducer

@@ -15,7 +15,6 @@ const HomeCategories = () => {
   const {
     categories: { categories },
   } = useSelector((state) => state?.categories)
-  console.log(categories)
 
   const categoriesToShow = categories?.slice(0, 4)
 

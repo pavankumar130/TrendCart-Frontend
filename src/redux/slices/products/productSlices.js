@@ -72,7 +72,8 @@ export const createProductAction = createAsyncThunk(
 //fetch products action
 export const fetchProductsAction = createAsyncThunk(
   'product/list',
-  async (payload, { rejectWithValue, getState, dispatch }) => {
+  async ({ url }, { rejectWithValue, getState, dispatch }) => {
+    console.log(url)
     try {
       const token = getState()?.users?.useAuth?.userInfo?.token
       const config = {
@@ -81,7 +82,7 @@ export const fetchProductsAction = createAsyncThunk(
         },
       }
 
-      const { data } = await axios.get(`${baseURL}/products`, config)
+      const { data } = await axios.get(`${url}`, config)
       return data
     } catch (error) {
       return rejectWithValue(error?.response?.data)
@@ -120,6 +121,7 @@ const productSlice = createSlice({
     // create
     builder.addCase(createProductAction.pending, (state) => {
       state.loading = true
+      state.isAdded = false
     })
     builder.addCase(createProductAction.fulfilled, (state, action) => {
       state.loading = false
@@ -137,6 +139,7 @@ const productSlice = createSlice({
     // fetch all
     builder.addCase(fetchProductsAction.pending, (state) => {
       state.loading = true
+      state.isAdded = false
     })
     builder.addCase(fetchProductsAction.fulfilled, (state, action) => {
       state.loading = false
@@ -154,6 +157,7 @@ const productSlice = createSlice({
     // fetch
     builder.addCase(fetchProductAction.pending, (state) => {
       state.loading = true
+      state.isAdded = false
     })
     builder.addCase(fetchProductAction.fulfilled, (state, action) => {
       state.loading = false
@@ -171,6 +175,7 @@ const productSlice = createSlice({
     // reset error
     builder.addCase(resetErrAction.pending, (state, action) => {
       state.error = null
+      state.isAdded = false
     })
     // reset success
     builder.addCase(resetSuccessAction.pending, (state, action) => {
