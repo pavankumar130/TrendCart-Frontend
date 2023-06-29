@@ -1,60 +1,60 @@
-import { Fragment, useEffect, useState } from "react";
-import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
+import { Fragment, useEffect, useState } from 'react'
+import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
   ShoppingCartIcon,
   UserIcon,
   XMarkIcon,
-} from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
-import baseURL from "../../utils/baseURL";
-import logo from "./logo3.png";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCategoriesAction } from "../../redux/slices/categories/categoriesSlice";
-import { getCartItemsFromLocalStorageAction } from "../../redux/slices/cart/cartSlices";
-import { logoutAction } from "../../redux/slices/users/usersSlice";
-import { fetchCouponsAction } from "../../redux/slices/coupons/couponsSlice";
+} from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
+import baseURL from '../../utils/baseURL'
+import logo from './logo.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCategoriesAction } from '../../redux/slices/categories/categoriesSlice'
+import { getCartItemsFromLocalStorageAction } from '../../redux/slices/cart/cartSlices'
+import { logoutAction } from '../../redux/slices/users/usersSlice'
+import { fetchCouponsAction } from '../../redux/slices/coupons/couponsSlice'
 
 export default function Navbar() {
   //dispatch
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchCategoriesAction());
-  }, [dispatch]);
+    dispatch(fetchCategoriesAction())
+  }, [dispatch])
   //get data from store
-  const { categories } = useSelector((state) => state?.categories);
+  const { categories } = useSelector((state) => state?.categories)
 
-  const categoriesToDisplay = categories?.categories?.slice(0, 3);
+  const categoriesToDisplay = categories?.categories?.slice(0, 3)
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   //get data from store
   useEffect(() => {
-    dispatch(getCartItemsFromLocalStorageAction());
-  }, [dispatch]);
-  const { cartItems } = useSelector((state) => state?.carts);
+    dispatch(getCartItemsFromLocalStorageAction())
+  }, [dispatch])
+  const { cartItems } = useSelector((state) => state?.carts)
   //get cart items from local storage
-  let cartItemsFromLocalStorage;
+  let cartItemsFromLocalStorage
   //get login user from localstorage
 
-  const user = JSON.parse(localStorage.getItem("userInfo"));
+  const user = JSON.parse(localStorage.getItem('userInfo'))
 
-  const isLoggedIn = user?.token ? true : false;
+  const isLoggedIn = user?.token ? true : false
   //logout handler
   const logoutHandler = () => {
-    dispatch(logoutAction());
+    dispatch(logoutAction())
     //reload
-    window.location.reload();
-  };
+    window.location.reload()
+  }
   //coupons
   useEffect(() => {
-    dispatch(fetchCouponsAction());
-  }, [dispatch]);
+    dispatch(fetchCouponsAction())
+  }, [dispatch])
   //get coupons
-  const { coupons, loading, error } = useSelector((state) => state?.coupons);
+  const { coupons, loading, error } = useSelector((state) => state?.coupons)
   //Get current coupon
   const currentCoupon = coupons
     ? coupons?.coupons?.[coupons?.coupons?.length - 1]
-    : console.log(currentCoupon);
+    : console.log(currentCoupon)
 
   return (
     <div className="bg-white">
@@ -133,7 +133,7 @@ export default function Navbar() {
                       </Link>
                     </>
                   ) : (
-                    categoriesToDisplay?.map((category) => {
+                    categoriesToDisplay?.slice(0, 4).map((category) => {
                       return (
                         <>
                           <Link
@@ -144,7 +144,7 @@ export default function Navbar() {
                             {category?.name}
                           </Link>
                         </>
-                      );
+                      )
                     })
                   )}
                 </div>
@@ -182,23 +182,6 @@ export default function Navbar() {
 
       <header className="relative z-10">
         <nav aria-label="Top">
-          {/* Coupon navbar */}
-          {!currentCoupon?.isExpired && (
-            <div className="bg-yellow-600">
-              <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                <p
-                  style={{ textAlign: "center", width: "100%" }}
-                  className="flex-1 text-center text-sm font-medium text-white lg:flex-none"
-                >
-                  {currentCoupon
-                    ? `${currentCoupon?.code}- ${currentCoupon?.discount}% , ${currentCoupon?.daysLeft}`
-                    : "No Flash sale at moment"}
-                </p>
-
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6"></div>
-              </div>
-            </div>
-          )}
           {/* Top navigation  desktop*/}
           {!isLoggedIn && (
             <div className="bg-gray-800">
@@ -238,7 +221,12 @@ export default function Navbar() {
                     <Link to="/">
                       <span className="sr-only">Your Company</span>
                       <img
-                        className="h-32 pt-2 w-auto"
+                        className=" pt-2 w-auto"
+                        style={{
+                          height: '90px',
+                          width: '130px',
+                          marginTop: '10px',
+                        }}
                         src={logo}
                         alt="i-novotek logo"
                       />
@@ -280,11 +268,16 @@ export default function Navbar() {
                                   key={category?._id}
                                   to={`/products-filters?category=${category?.name}`}
                                   className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                                  style={{
+                                    fontSize: '17px',
+                                    textTransform: 'capitalize',
+                                    margin: '40px 10px',
+                                  }}
                                 >
                                   {category?.name}
                                 </Link>
                               </>
-                            );
+                            )
                           })
                         )}
                       </div>
@@ -305,9 +298,17 @@ export default function Navbar() {
                   {/* logo */}
                   <Link to="/" className="lg:hidden">
                     <img
-                      className="h-32 mt-2 w-auto"
+                      className="h-32"
                       src={logo}
                       alt="i-novotek logo"
+                      style={{
+                        height: '60px',
+                        width: '110px',
+                        marginTop: '4px',
+                        position: 'absolute',
+                        top: 0,
+                        left: '100px',
+                      }}
                     />
                   </Link>
 
@@ -382,6 +383,24 @@ export default function Navbar() {
           </div>
         </nav>
       </header>
+
+      {/* Coupon navbar */}
+      {!currentCoupon?.isExpired && (
+        <div className="bg-yellow-600" style={{ marginTop: '40px' }}>
+          <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <p
+              style={{ textAlign: 'center', width: '100%' }}
+              className="flex-1 text-center text-sm font-medium text-white lg:flex-none"
+            >
+              {currentCoupon
+                ? `${currentCoupon?.code}- ${currentCoupon?.discount}% , ${currentCoupon?.daysLeft}`
+                : 'No Flash sale at moment'}
+            </p>
+
+            <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6"></div>
+          </div>
+        </div>
+      )}
     </div>
-  );
+  )
 }

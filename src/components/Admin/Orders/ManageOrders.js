@@ -1,11 +1,11 @@
-import { Menu, Transition } from "@headlessui/react";
-import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
-import { CheckCircleIcon } from "@heroicons/react/20/solid";
-import UpdateOrders from "./UpdateOrders";
+import { Menu, Transition } from '@headlessui/react'
+import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import UpdateOrders from './UpdateOrders'
 
 export default function ManageOrders() {
   //get orders
-  let loading, error, allOrders;
+  let loading, error, allOrders
 
   return (
     <>
@@ -34,7 +34,8 @@ export default function ManageOrders() {
                   allOrders?.map((order) => (
                     <div
                       key={order.number}
-                      className="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
+                      className="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border"
+                    >
                       <div className="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6">
                         <dl className="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
                           <div>
@@ -60,14 +61,15 @@ export default function ManageOrders() {
                               Total amount
                             </dt>
                             <dd className="mt-1 font-medium text-gray-900">
-                              $ {order.totalPrice}
+                              ₹ {order.totalPrice}
                             </dd>
                           </div>
                         </dl>
 
                         <Menu
                           as="div"
-                          className="relative flex justify-end lg:hidden">
+                          className="relative flex justify-end lg:hidden"
+                        >
                           <div className="flex items-center">
                             <Menu.Button className="-m-2 flex items-center p-2 text-gray-400 hover:text-gray-500">
                               <EllipsisVerticalIcon
@@ -105,7 +107,7 @@ export default function ManageOrders() {
                                 <div className="font-medium text-gray-900 sm:flex sm:justify-between">
                                   <h5>{product?.name}</h5>
                                   <p className="mt-2 sm:mt-0">
-                                    ${product?.discountedPrice}
+                                    ₹{product?.discountedPrice}
                                   </p>
                                 </div>
                                 <p className="hidden text-gray-500 sm:mt-2 sm:block">
@@ -132,12 +134,14 @@ export default function ManageOrders() {
                                   fill="none"
                                   stroke="currentColor"
                                   viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg">
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
                                   <path
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                     stroke-width="2"
-                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                  ></path>
                                 </svg>
                                 <p className="ml-2 text-sm font-medium text-gray-500">
                                   Payment Status: {order.paymentStatus}
@@ -159,5 +163,5 @@ export default function ManageOrders() {
         </main>
       </div>
     </>
-  );
+  )
 }

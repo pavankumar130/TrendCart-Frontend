@@ -1,65 +1,65 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import {
   CheckIcon,
   ClockIcon,
   QuestionMarkCircleIcon,
   XMarkIcon,
-} from "@heroicons/react/20/solid";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+} from '@heroicons/react/20/solid'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   changeOrderItemQty,
   getCartItemsFromLocalStorageAction,
   removeOrderItemQty,
-} from "../../../redux/slices/cart/cartSlices";
-import { fetchCouponAction } from "../../../redux/slices/coupons/couponsSlice";
-import LoadingComponent from "../../LoadingComp/LoadingComponent";
-import ErrorMsg from "../../ErrorMsg/ErrorMsg";
-import SuccessMsg from "../../SuccessMsg/SuccessMsg";
+} from '../../../redux/slices/cart/cartSlices'
+import { fetchCouponAction } from '../../../redux/slices/coupons/couponsSlice'
+import LoadingComponent from '../../LoadingComp/LoadingComponent'
+import ErrorMsg from '../../ErrorMsg/ErrorMsg'
+import SuccessMsg from '../../SuccessMsg/SuccessMsg'
 
 export default function ShoppingCart() {
   //dispatch
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getCartItemsFromLocalStorageAction());
-  }, [dispatch]);
+    dispatch(getCartItemsFromLocalStorageAction())
+  }, [dispatch])
   //coupon state
-  const [couponCode, setCouponCode] = useState(null);
+  const [couponCode, setCouponCode] = useState(null)
   const applyCouponSubmit = (e) => {
-    e.preventDefault();
-    dispatch(fetchCouponAction(couponCode));
-    setCouponCode("");
-  };
+    e.preventDefault()
+    dispatch(fetchCouponAction(couponCode))
+    setCouponCode('')
+  }
 
   //get coupon  from store
   const { coupon, loading, error, isAdded } = useSelector(
     (state) => state?.coupons
-  );
+  )
   //get cart items from store
-  const { cartItems } = useSelector((state) => state?.carts);
+  const { cartItems } = useSelector((state) => state?.carts)
   //add to cart handler
   const changeOrderItemQtyHandler = (productId, qty) => {
-    dispatch(changeOrderItemQty({ productId, qty }));
-    dispatch(getCartItemsFromLocalStorageAction());
-  };
-  console.log(cartItems);
+    dispatch(changeOrderItemQty({ productId, qty }))
+    dispatch(getCartItemsFromLocalStorageAction())
+  }
+  console.log(cartItems)
   //calculate total price
-  let sumTotalPrice = 0;
+  let sumTotalPrice = 0
   sumTotalPrice = cartItems?.reduce((acc, current) => {
-    return acc + current?.totalPrice;
-  }, 0);
+    return acc + current?.totalPrice
+  }, 0)
 
   //check if coupon found
   if (coupon) {
     sumTotalPrice =
-      sumTotalPrice - (sumTotalPrice * coupon?.coupon?.discount) / 100;
+      sumTotalPrice - (sumTotalPrice * coupon?.coupon?.discount) / 100
   }
   //price of the product - (price of product x discount/100)
   //remove cart  Item handler
   const removeOrderItemQtyHandler = (productId) => {
-    dispatch(removeOrderItemQty(productId));
-    dispatch(getCartItemsFromLocalStorageAction());
-  };
+    dispatch(removeOrderItemQty(productId))
+    dispatch(getCartItemsFromLocalStorageAction())
+  }
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 pt-16 pb-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -74,7 +74,8 @@ export default function ShoppingCart() {
 
             <ul
               role="list"
-              className="divide-y divide-gray-200 border-t border-b border-gray-200">
+              className="divide-y divide-gray-200 border-t border-b border-gray-200"
+            >
               {cartItems?.map((product) => (
                 <li key={product._id} className="flex py-6 sm:py-10">
                   <div className="flex-shrink-0">
@@ -103,7 +104,7 @@ export default function ShoppingCart() {
                           </p>
                         </div>
                         <p className="mt-1 text-sm font-medium text-gray-900">
-                          ${product?.price} x {product?.qty} = $
+                          ₹{product?.price} x {product?.qty} = ₹
                           {product?.totalPrice}
                         </p>
                       </div>
@@ -119,7 +120,8 @@ export default function ShoppingCart() {
                               e.target.value
                             )
                           }
-                          className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
+                          className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                        >
                           {/* use the qty  */}
 
                           {[...Array(product?.qtyLeft)?.keys()]?.map((x) => {
@@ -127,7 +129,7 @@ export default function ShoppingCart() {
                               <option key={x} value={x + 1}>
                                 {x + 1}
                               </option>
-                            );
+                            )
                           })}
                         </select>
                         {/* remove */}
@@ -136,7 +138,8 @@ export default function ShoppingCart() {
                             onClick={() =>
                               removeOrderItemQtyHandler(product?._id)
                             }
-                            className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500">
+                            className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
+                          >
                             <span className="sr-only">Remove</span>
                             <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                           </button>
@@ -152,10 +155,12 @@ export default function ShoppingCart() {
           {/* Order summary */}
           <section
             aria-labelledby="summary-heading"
-            className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
+            className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
+          >
             <h2
               id="summary-heading"
-              className="text-lg font-medium text-gray-900">
+              className="text-lg font-medium text-gray-900"
+            >
               Order summary
             </h2>
 
@@ -163,7 +168,7 @@ export default function ShoppingCart() {
               <div className="flex items-center justify-between">
                 <dt className="text-sm text-gray-600">Subtotal</dt>
                 <dd className="text-sm font-medium text-gray-900">
-                  $ {sumTotalPrice}.00
+                  ₹ {sumTotalPrice}.00
                 </dd>
               </div>
               <div className="flex items-center justify-between border-t border-gray-200 pt-4"></div>
@@ -204,7 +209,7 @@ export default function ShoppingCart() {
                   Order total
                 </dt>
                 <dd className=" text-xl font-medium text-gray-900">
-                  $ {sumTotalPrice}
+                  ₹ {sumTotalPrice}
                 </dd>
               </div>
             </dl>
@@ -216,7 +221,8 @@ export default function ShoppingCart() {
                 state={{
                   sumTotalPrice,
                 }}
-                className="w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
+                className="w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+              >
                 Proceed to Checkout
               </Link>
             </div>
@@ -224,5 +230,5 @@ export default function ShoppingCart() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -42,7 +42,7 @@ export default function OrdersStats() {
           </dt>
           <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
             <p className="text-2xl font-semibold text-gray-200">
-              {stats?.saleToday?.length <= 0 ? '$0.00' : 0}
+              {stats?.saleToday?.length <= 0 ? '₹0.00' : 0}
             </p>
 
             <div className="absolute inset-x-0 bottom-0 bg-red-900 px-4 py-4 sm:px-6">
@@ -75,7 +75,7 @@ export default function OrdersStats() {
           </dt>
           <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
             <p className="text-2xl font-semibold text-gray-200">
-              ${statistics[1]}
+              ₹{statistics[1]}
             </p>
 
             <div className="absolute inset-x-0 bottom-0 bg-pink-900 px-4 py-4 sm:px-6">
@@ -108,7 +108,7 @@ export default function OrdersStats() {
           </dt>
           <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
             <p className="text-2xl font-semibold text-gray-200">
-              ${statistics[3]}
+              ₹{statistics[3]}
             </p>
 
             <div className="absolute inset-x-0 bottom-0 bg-pink-900 px-4 py-4 sm:px-6">
@@ -142,7 +142,7 @@ export default function OrdersStats() {
           <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
             <p className="text-2xl font-semibold text-gray-100">
               {' '}
-              ${statistics[2]}
+              ₹{statistics[2]}
             </p>
 
             <div className="absolute inset-x-0 bottom-0 bg-pink-900 px-4 py-4 sm:px-6">
