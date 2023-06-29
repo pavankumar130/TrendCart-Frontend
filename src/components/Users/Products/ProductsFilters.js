@@ -81,21 +81,55 @@ export default function ProductsFilters() {
   console.log(color)
   //build up url
   let productUrl = `${baseURL}/products`
+  let tempUrl = `${baseURL}/products`
   if (category) {
     productUrl = `${baseURL}/products?category=${category}`
   }
-  if (brand) {
-    productUrl = `${productUrl}&brand=${brand}`
+  if (category) {
+    if (brand) {
+      productUrl = `${productUrl}&brand=${brand}`
+    }
+    if (size) {
+      productUrl = `${productUrl}&size=${size}`
+    }
+    if (price) {
+      productUrl = `${productUrl}&price=${price}`
+    }
+    if (color) {
+      productUrl = `${productUrl}&color=${color?.name}`
+    }
+  } else {
+    if (brand) {
+      if (productUrl === tempUrl) {
+        productUrl = `${productUrl}?brand=${brand}`
+      } else {
+        productUrl = `${productUrl}&brand=${brand}`
+      }
+    }
+    if (size) {
+      if (productUrl === tempUrl) {
+        productUrl = `${productUrl}?size=${size}`
+      } else {
+        productUrl = `${productUrl}&size=${size}`
+      }
+    }
+    if (price) {
+      if (productUrl === tempUrl) {
+        productUrl = `${productUrl}?price=${price}`
+      } else {
+        productUrl = `${productUrl}&price=${price}`
+      }
+    }
+    if (color) {
+      if (productUrl === tempUrl) {
+        productUrl = `${productUrl}?color=${color?.name}`
+      } else {
+        productUrl = `${productUrl}&color=${color?.name}`
+      }
+    }
   }
-  if (size) {
-    productUrl = `${productUrl}&size=${size}`
-  }
-  if (price) {
-    productUrl = `${productUrl}&price=${price}`
-  }
-  if (color) {
-    productUrl = `${productUrl}&color=${color?.name}`
-  }
+
+  console.log(category)
   //fetch all products
   useEffect(() => {
     dispatch(
@@ -109,7 +143,7 @@ export default function ProductsFilters() {
     products: { products },
     loading,
     error,
-  } = useSelector((state) => state?.products)
+  } = useSelector((state) => state?.products || {})
 
   //fetch brands
   useEffect(() => {
@@ -140,9 +174,6 @@ export default function ProductsFilters() {
 
   let colorsLoading
   let colorsError
-
-  let productsLoading
-  let productsError
 
   return (
     <div className="bg-white">

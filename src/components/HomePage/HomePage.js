@@ -54,29 +54,6 @@ export default function Example() {
       <main>
         {/* Hero */}
         <div className="flex flex-col border-b border-gray-200 lg:border-0">
-          <nav aria-label="Offers" className="order-last lg:order-first">
-            <div className="mx-auto max-w-7xl lg:px-8">
-              <ul
-                role="list"
-                className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-3 lg:divide-y-0 lg:divide-x"
-              >
-                {offers.map((offer) => (
-                  <li key={offer.name} className="flex flex-col">
-                    <a
-                      href={offer.href}
-                      className="relative flex flex-1 flex-col justify-center bg-white py-6 px-4 text-center focus:z-10"
-                    >
-                      <p className="text-sm text-gray-500">{offer.name}</p>
-                      <p className="font-semibold text-gray-900">
-                        {offer.description}
-                      </p>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </nav>
-
           <div className="relative">
             <div
               aria-hidden="true"
@@ -128,11 +105,18 @@ export default function Example() {
               <h2
                 id="sale-heading"
                 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl"
-                style={{ marginBottom: '40px' }}
+                style={{
+                  marginBottom: '40px',
+                  fontFamily: 'courier',
+                  fontSize: '55px',
+                }}
               >
                 Exclusive, Limited Stock: Act Now!
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600">
+              <p
+                className="mx-auto mt-4 max-w-xl text-xl text-gray-600"
+                style={{ fontFamily: 'sans-serif' }}
+              >
                 Discover exclusive limited editions. Once they're gone, they're
                 gone. Don't miss out on your must-have items.
               </p>

@@ -213,7 +213,7 @@ export default function Navbar() {
           )}
           {/* Deskto Navigation */}
           <div className="bg-white">
-            <div className="border-b border-gray-200">
+            <div>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
@@ -313,7 +313,10 @@ export default function Navbar() {
                   </Link>
 
                   {/* login profile icon mobile */}
-                  <div className="flex flex-1 items-center justify-end">
+                  <div
+                    className="flex flex-1 items-center justify-end"
+                    style={{ marginTop: '20px' }}
+                  >
                     {user?.userFound?.isAdmin && (
                       <Link
                         to="/admin"
@@ -386,10 +389,17 @@ export default function Navbar() {
 
       {/* Coupon navbar */}
       {!currentCoupon?.isExpired && (
-        <div className="bg-yellow-600" style={{ marginTop: '40px' }}>
+        <div
+          style={{
+            marginTop: '20px',
+            background: '#0E2954',
+            marginBottom: '3px',
+            padding: '10px',
+          }}
+        >
           <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <p
-              style={{ textAlign: 'center', width: '100%' }}
+              style={{ textAlign: 'center', width: '100%', fontSize: '15px' }}
               className="flex-1 text-center text-sm font-medium text-white lg:flex-none"
             >
               {currentCoupon
