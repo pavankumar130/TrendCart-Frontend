@@ -1,39 +1,38 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { registerUserAction } from '../../../redux/slices/users/usersSlice'
-import LoadingComponent from '../../LoadingComp/LoadingComponent'
-import ErrorMsg from '../../ErrorMsg/ErrorMsg'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUserAction } from "../../../redux/slices/users/usersSlice";
+import ErrorMsg from "../../ErrorMsg/ErrorMsg";
+import LoadingComponent from "../../LoadingComp/LoadingComponent";
 
 const RegisterForm = () => {
-  const dispatch = useDispatch()
+  //dispatch
+  const dispatch = useDispatch();
   //dispatch
   const [formData, setFormData] = useState({
-    fullname: '',
-    email: '',
-    password: '',
-  })
+    fullname: "",
+    email: "",
+    password: "",
+  });
   //---Destructuring---
-  const { fullname, email, password } = formData
+  const { fullname, email, password } = formData;
   //---onchange handler----
   const onChangeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   //---onsubmit handler----
   const onSubmitHandler = (e) => {
-    e.preventDefault()
-    dispatch(registerUserAction({ fullname, email, password }))
-    // reload
-  }
-
+    e.preventDefault();
+    dispatch(registerUserAction({ fullname, email, password }));
+  };
   //select store data
-  const { user, error, loading } = useSelector((state) => state.users)
-
+  const { user, error, loading } = useSelector((state) => state?.users);
   //redirect
-  // if (user) {
-  //   window.location.href = '/login'
-  // }
-
+  useEffect(() => {
+    if (user) {
+      window.location.href = "/login";
+    }
+  }, [user]);
   return (
     <>
       <section className="relative overflow-x-hidden">
@@ -93,7 +92,7 @@ const RegisterForm = () => {
         />
       </section>
     </>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

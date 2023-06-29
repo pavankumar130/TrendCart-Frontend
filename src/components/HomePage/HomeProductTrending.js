@@ -1,27 +1,29 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { fetchProductsAction } from '../../redux/slices/products/productSlices'
-import baseURL from '../../utils/baseURL'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchProductsAction } from "../../redux/slices/products/productSlices";
+import baseURL from "../../utils/baseURL";
 
 const HomeProductTrending = () => {
-  let productUrl = `${baseURL}/products`
-  // dispatch
-  const dispatch = useDispatch()
+  //build up url
+  let productUrl = `${baseURL}/products`;
+  //dispatch
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(
       fetchProductsAction({
         url: productUrl,
       })
-    )
-  }, [dispatch])
-  // get data from store
+    );
+  }, [dispatch]);
+  //get data from store
   const {
     products: { products },
     error,
     loading,
-  } = useSelector((state) => state?.products)
-  const trendingProducts = []
+  } = useSelector((state) => state?.products);
+  console.log(products);
+  const trendingProducts = [];
   return (
     <>
       <section aria-labelledby="trending-heading">
@@ -29,14 +31,12 @@ const HomeProductTrending = () => {
           <div className="md:flex md:items-center md:justify-between">
             <h2
               id="favorites-heading"
-              className="text-2xl font-bold tracking-tight text-gray-900"
-            >
+              className="text-2xl font-bold tracking-tight text-gray-900">
               Trending Products
             </h2>
             <a
               href="#"
-              className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block"
-            >
+              className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block">
               Shop the collection
               <span aria-hidden="true"> &rarr;</span>
             </a>
@@ -47,8 +47,7 @@ const HomeProductTrending = () => {
               <Link
                 to={`/products/${product._id}`}
                 key={product.id}
-                className="group relative"
-              >
+                className="group relative">
                 <div className="h-56 w-full overflow-hidden rounded-md group-hover:opacity-75 lg:h-72 xl:h-80">
                   <img
                     src={product.images[0]}
@@ -61,7 +60,7 @@ const HomeProductTrending = () => {
                   {product.name}
                 </h3>
                 <p className="mt-1 text-sm font-medium text-gray-900">
-                  ₹ {product.price}.00
+                  ${product.price}.00
                 </p>
                 <p className="mt-1 text-sm text-gray-500">
                   {product.description}
@@ -73,8 +72,7 @@ const HomeProductTrending = () => {
           <div className="mt-8 text-sm md:hidden">
             <a
               href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
+              className="font-medium text-indigo-600 hover:text-indigo-500">
               Shop the collection
               <span aria-hidden="true"> &rarr;</span>
             </a>
@@ -82,7 +80,7 @@ const HomeProductTrending = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default HomeProductTrending
+export default HomeProductTrending;

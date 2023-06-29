@@ -1,23 +1,30 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchCategoriesAction } from "../../../redux/slices/categories/categoriesSlice";
-
+import { fetchBrandsAction } from "../../../redux/slices/categories/brandsSlice";
 import ErrorMsg from "../../ErrorMsg/ErrorMsg";
 import LoadingComponent from "../../LoadingComp/LoadingComponent";
 import NoDataFound from "../../NoDataFound/NoDataFound";
-
-export default function ManageCategories() {
+const people = [
+  {
+    name: "Lindsay Walton",
+    title: "Front-end Developer",
+    email: "lindsay.walton@example.com",
+    role: "Member",
+  },
+  // More people...
+];
+export default function BrandsList() {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchCategoriesAction());
+    dispatch(fetchBrandsAction());
   }, [dispatch]);
   const {
-    categories: { categories },
+    brands: { brands },
     loading,
     error,
-  } = useSelector((state) => state?.categories);
+  } = useSelector((state) => state?.brands);
 
   //delete category handler
   const deleteCategoryHandler = (id) => {};
@@ -26,7 +33,7 @@ export default function ManageCategories() {
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">
-            All Categories
+            All Brands Categories [{brands?.length}]
           </h1>
           <p className="mt-2 text-sm text-gray-700">
             A list of all the users in your account including their name, title,
@@ -45,7 +52,7 @@ export default function ManageCategories() {
         <LoadingComponent />
       ) : error ? (
         <ErrorMsg message={error?.message} />
-      ) : categories?.length <= 0 ? (
+      ) : brands?.length <= 0 ? (
         <NoDataFound />
       ) : (
         <div className="mt-8 flex flex-col">
@@ -60,11 +67,6 @@ export default function ManageCategories() {
                         className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                         Name
                       </th>
-                      <th
-                        scope="col"
-                        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                        No. Products
-                      </th>
 
                       <th
                         scope="col"
@@ -74,32 +76,19 @@ export default function ManageCategories() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
-                    {categories?.map((category) => (
-                      <tr key={category?._id}>
+                    {brands?.map((brand) => (
+                      <tr key={brand?._id}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                           <div className="flex items-center">
-                            <div className="h-10 w-10 flex-shrink-0">
-                              <img
-                                className="h-10 w-10 rounded-full"
-                                src={category?.image}
-                                alt={category?.name}
-                              />
-                            </div>
                             <div className="ml-4">
                               <div className="font-medium text-gray-900">
-                                {category?.name}
+                                {brand?.name}
                               </div>
                             </div>
                           </div>
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          <div className="text-gray-900">
-                            {category?.products?.length}
-                          </div>
-                        </td>
-
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          {new Date(category?.createdAt).toLocaleDateString()}
+                          {new Date(brand?.createdAt).toLocaleDateString()}
                         </td>
                         {/* edit icon */}
                         {/* <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-left text-sm font-medium sm:pr-6">

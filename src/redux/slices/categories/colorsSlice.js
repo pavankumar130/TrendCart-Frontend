@@ -23,7 +23,7 @@ export const createColorAction = createAsyncThunk(
   async (name, { rejectWithValue, getState, dispatch }) => {
     try {
       //Token - Authenticated
-      const token = getState()?.users?.useAuth?.userInfo?.token
+      const token = getState()?.users?.userAuth?.userInfo?.token
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -64,12 +64,14 @@ const colorsSlice = createSlice({
     //create
     builder.addCase(createColorAction.pending, (state) => {
       state.loading = true
-      state.isAdded = false
     })
     builder.addCase(createColorAction.fulfilled, (state, action) => {
       state.loading = false
       state.color = action.payload
       state.isAdded = true
+      setTimeout(function () {
+        window.location.reload()
+      }, 3000)
     })
     builder.addCase(createColorAction.rejected, (state, action) => {
       state.loading = false
@@ -81,7 +83,6 @@ const colorsSlice = createSlice({
     //fetch all
     builder.addCase(fetchColorsAction.pending, (state) => {
       state.loading = true
-      state.isAdded = false
     })
     builder.addCase(fetchColorsAction.fulfilled, (state, action) => {
       state.loading = false
@@ -90,6 +91,7 @@ const colorsSlice = createSlice({
     builder.addCase(fetchColorsAction.rejected, (state, action) => {
       state.loading = false
       state.colors = null
+      state.isAdded = false
       state.error = action.payload
     })
     //reset error action

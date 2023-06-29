@@ -1,6 +1,6 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Menu, Transition } from '@headlessui/react'
-import { Link, Outlet } from 'react-router-dom'
+import { Fragment, useState } from "react";
+import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Link, Outlet } from "react-router-dom";
 import {
   Bars3CenterLeftIcon,
   BellIcon,
@@ -14,12 +14,12 @@ import {
   ShieldCheckIcon,
   UserGroupIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
-import logo from '../Navbar/logo3.png'
+} from "@heroicons/react/24/outline";
+import logo from "../Navbar/logo3.png";
 const ordersLinks = [
   {
-    name: 'Dashboard',
-    href: '',
+    name: "Dashboard",
+    href: "",
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,28 +39,8 @@ const ordersLinks = [
     current: true,
   },
   {
-    name: 'Manage Orders',
-    href: 'manage-orders',
-    icon: () => (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-6 h-6 m-1"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    ),
-  },
-  {
-    name: 'Customers',
-    href: 'customers',
+    name: "Customers",
+    href: "customers",
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -78,12 +58,12 @@ const ordersLinks = [
       </svg>
     ),
   },
-]
+];
 
 const productsLinks = [
   {
-    name: 'Add Product',
-    href: 'add-product',
+    name: "Add Product",
+    href: "add-product",
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -104,17 +84,17 @@ const productsLinks = [
   },
 
   {
-    name: 'Manage Stock',
-    href: 'manage-products',
+    name: "Manage Stock",
+    href: "manage-products",
     icon: ScaleIcon,
     current: false,
   },
-]
+];
 
 const couponsLinks = [
   {
-    name: 'Add Coupon',
-    href: 'add-coupon',
+    name: "Add Coupon",
+    href: "add-coupon",
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -133,8 +113,8 @@ const couponsLinks = [
     ),
   },
   {
-    name: 'Manage Coupon',
-    href: 'manage-coupon',
+    name: "Manage Coupons",
+    href: "manage-coupon",
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -152,40 +132,38 @@ const couponsLinks = [
       </svg>
     ),
   },
-]
+];
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 const CategoryLinks = [
-  { name: 'Add Category', href: 'category-to-add', icon: CogIcon },
+  { name: "Add Category", href: "category-to-add", icon: CogIcon },
   {
-    name: 'Manage Category',
-    href: 'manage-category',
+    name: "All Categories",
+    href: "manage-category",
     icon: QuestionMarkCircleIcon,
   },
-]
+];
 
 const colorsLinks = [
-  { name: 'Add New Color', href: 'add-color', icon: CogIcon },
   {
-    name: 'All Colors',
-    href: 'all-colors',
+    name: "All Colors",
+    href: "all-colors",
     icon: QuestionMarkCircleIcon,
   },
-]
+];
 
 const brandsLinks = [
-  { name: 'Add New Brand', href: 'add-brand', icon: CogIcon },
   {
-    name: 'All Brands',
-    href: 'all-brands',
+    name: "All Brands",
+    href: "all-brands",
     icon: QuestionMarkCircleIcon,
   },
-]
+];
 
-export default function AdminDashboard() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+export default function AddminDashboard() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
@@ -273,11 +251,11 @@ export default function AdminDashboard() {
                           to={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-cyan-800 text-white'
-                              : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
-                            'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                              ? "bg-cyan-800 text-white"
+                              : "text-cyan-100 hover:text-white hover:bg-cyan-600",
+                            "group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
                           )}
-                          aria-current={item.current ? 'page' : undefined}
+                          aria-current={item.current ? "page" : undefined}
                         >
                           <item.icon
                             className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
@@ -372,7 +350,7 @@ export default function AdminDashboard() {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex flex-grow flex-col overflow-y-auto bg-cyan-900 pt-5 pb-4">
+          <div className="flex flex-grow flex-col overflow-y-auto bg-cyan-900 pt-32 pb-4">
             <nav
               className="mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto"
               aria-label="Sidebar"
@@ -403,11 +381,11 @@ export default function AdminDashboard() {
                     to={item.href}
                     className={classNames(
                       item.current
-                        ? 'bg-cyan-800 text-white'
-                        : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
-                      'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                        ? "bg-cyan-800 text-white"
+                        : "text-cyan-100 hover:text-white hover:bg-cyan-600",
+                      "group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
                     )}
-                    aria-current={item.current ? 'page' : undefined}
+                    aria-current={item.current ? "page" : undefined}
                   >
                     <item.icon
                       className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
@@ -607,5 +585,5 @@ export default function AdminDashboard() {
         </div>
       </div>
     </>
-  )
+  );
 }

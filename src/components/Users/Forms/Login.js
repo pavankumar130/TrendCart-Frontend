@@ -1,41 +1,40 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { loginUserAction } from '../../../redux/slices/users/usersSlice'
-import ErrorMsg from '../../ErrorMsg/ErrorMsg'
-import LoadingComponent from '../../LoadingComp/LoadingComponent'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUserAction } from "../../../redux/slices/users/usersSlice";
+import ErrorMsg from "../../ErrorMsg/ErrorMsg";
+import LoadingComponent from "../../LoadingComp/LoadingComponent";
 
 const Login = () => {
-  // dispatch
-  const dispatch = useDispatch()
+  //dispatch
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    email: 'admin@gmail.com',
-    password: '12345',
-  })
+    email: "admin@gmail.com",
+    password: "12345",
+  });
   //---Destructuring---
-  const { email, password } = formData
+  const { email, password } = formData;
   //---onchange handler----
   const onChangeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   //---onsubmit handler----
   const onSubmitHandler = (e) => {
-    e.preventDefault()
-    dispatch(loginUserAction({ email, password }))
-  }
+    e.preventDefault();
+    dispatch(loginUserAction({ email, password }));
+  };
 
-  // get data from store
+  //get data from store
   const { error, loading, userInfo } = useSelector(
-    (state) => state?.users?.useAuth
-  )
-  console.log(error, loading, userInfo)
-  // redirect
-  // if (userInfo?.userFound?.isAdmin) {
-  //   window.location.href = '/admin'
-  //   console.log(userInfo?.userFound?.isAdmin)
-  // } else {
-  //   window.location.href = '/customer-profile'
-  // }
+    (state) => state?.users?.userAuth
+  );
+
+  //redirect
+  useEffect(() => {
+    if (userInfo?.userFound) {
+      window.location.href = "/";
+    }
+  }, [userInfo]);
   return (
     <>
       <section className="py-20 bg-gray-100 overflow-x-hidden">
@@ -50,7 +49,7 @@ const Login = () => {
                 <p className="mb-10 font-semibold font-heading">
                   Happy to see you again
                 </p>
-                {/* error message*/}
+                {/* err */}
                 {error && <ErrorMsg message={error?.message} />}
                 <form
                   className="flex flex-wrap -mx-4"
@@ -108,7 +107,7 @@ const Login = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

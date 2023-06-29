@@ -1,15 +1,16 @@
-import Swal from 'sweetalert2'
-import { resetErrAction } from '../../redux/slices/globalActions/globalActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
+
+import { resetErrAction } from "../../redux/slices/globalActions/globalActions";
 
 const ErrorMsg = ({ message }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
+    icon: "error",
+    title: "Oops...",
     text: message,
-  })
-  dispatch(resetErrAction())
-}
+  });
+  dispatch(resetErrAction());
+};
 
-export default ErrorMsg
+export default ErrorMsg;

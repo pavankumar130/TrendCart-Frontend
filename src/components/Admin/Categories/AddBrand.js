@@ -1,33 +1,33 @@
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { createBrandAction } from '../../../redux/slices/categories/brandsSlice'
-import ErrorMsg from '../../ErrorMsg/ErrorMsg'
-import LoadingComponent from '../../LoadingComp/LoadingComponent'
-import SuccessMsg from '../../SuccessMsg/SuccessMsg'
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { createBrandAction } from "../../../redux/slices/categories/brandsSlice";
+import ErrorMsg from "../../ErrorMsg/ErrorMsg";
+import LoadingComponent from "../../LoadingComp/LoadingComponent";
+import SuccessMsg from "../../SuccessMsg/SuccessMsg";
 
 export default function AddBrand() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   //form data
   const [formData, setFormData] = useState({
-    name: '',
-  })
+    name: "",
+  });
   //onChange
   const handleOnChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   //onSubmit
   const handleOnSubmit = (e) => {
-    e.preventDefault()
-    dispatch(createBrandAction(formData?.name))
+    e.preventDefault();
+    dispatch(createBrandAction(formData?.name));
     //reset form
     setFormData({
-      name: '',
-    })
-  }
+      name: "",
+    });
+  };
   //get data from store
-  const { error, loading, isAdded } = useSelector((state) => state?.brands)
+  const { error, loading, isAdded } = useSelector((state) => state?.brands);
 
   return (
     <>
@@ -41,8 +41,7 @@ export default function AddBrand() {
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
-            stroke="currentColor"
-          >
+            stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -61,8 +60,7 @@ export default function AddBrand() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
+                  className="block text-sm font-medium text-gray-700">
                   Name
                 </label>
                 <div className="mt-1">
@@ -80,8 +78,7 @@ export default function AddBrand() {
                 ) : (
                   <button
                     type="submit"
-                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
+                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Add Product Brand
                   </button>
                 )}
@@ -102,8 +99,7 @@ export default function AddBrand() {
                 <div>
                   <Link
                     to="/admin/add-brand"
-                    className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
-                  >
+                    className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                     Add Brand
                   </Link>
                 </div>
@@ -112,8 +108,7 @@ export default function AddBrand() {
                   <div>
                     <Link
                       to="/admin/add-color"
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
-                    >
+                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                       Add Color
                     </Link>
                   </div>
@@ -123,8 +118,7 @@ export default function AddBrand() {
                   <div>
                     <Link
                       to="/admin/add-category"
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
-                    >
+                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                       Add Category
                     </Link>
                   </div>
@@ -135,5 +129,5 @@ export default function AddBrand() {
         </div>
       </div>
     </>
-  )
+  );
 }

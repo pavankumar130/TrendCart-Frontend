@@ -23,7 +23,7 @@ export const createBrandAction = createAsyncThunk(
   async (name, { rejectWithValue, getState, dispatch }) => {
     try {
       //Token - Authenticated
-      const token = getState()?.users?.useAuth?.userInfo?.token
+      const token = getState()?.users?.userAuth?.userInfo?.token
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -64,12 +64,14 @@ const brandsSlice = createSlice({
     //create
     builder.addCase(createBrandAction.pending, (state) => {
       state.loading = true
-      state.isAdded = false
     })
     builder.addCase(createBrandAction.fulfilled, (state, action) => {
       state.loading = false
       state.brand = action.payload
       state.isAdded = true
+      setTimeout(function () {
+        window.location.reload()
+      }, 3000)
     })
     builder.addCase(createBrandAction.rejected, (state, action) => {
       state.loading = false
@@ -81,7 +83,6 @@ const brandsSlice = createSlice({
     //fetch all
     builder.addCase(fetchBrandsAction.pending, (state) => {
       state.loading = true
-      state.isAdded = false
     })
     builder.addCase(fetchBrandsAction.fulfilled, (state, action) => {
       state.loading = false
@@ -90,6 +91,7 @@ const brandsSlice = createSlice({
     builder.addCase(fetchBrandsAction.rejected, (state, action) => {
       state.loading = false
       state.brands = null
+      state.isAdded = false
       state.error = action.payload
     })
     //reset error action
