@@ -91,15 +91,36 @@ export default function ShoppingCart() {
                       <div>
                         <div className="flex justify-between">
                           <h3 className="text-sm">
-                            <p className="font-medium text-gray-700 hover:text-gray-800">
+                            <p
+                              className="font-medium text-gray-700 hover:text-gray-800"
+                              style={{
+                                textTransform: 'capitalize',
+                                fontSize: '25px',
+                                marginBottom: '10px',
+                              }}
+                            >
                               {product.name}
                             </p>
                           </h3>
                         </div>
-                        <div className="mt-1 flex text-sm">
-                          <p className="text-gray-500">{product.color}</p>
+                        <div
+                          className="mt-1 flex text-sm"
+                          style={{ marginBottom: '10px' }}
+                        >
+                          <p
+                            className="text-gray-500"
+                            style={{
+                              textTransform: 'capitalize',
+                              fontSize: '18px',
+                            }}
+                          >
+                            {product.color}
+                          </p>
 
-                          <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
+                          <p
+                            className="ml-4 border-l border-gray-200 pl-4 text-gray-500"
+                            style={{ fontSize: '18px' }}
+                          >
                             {product.size}
                           </p>
                         </div>
@@ -160,20 +181,36 @@ export default function ShoppingCart() {
             <h2
               id="summary-heading"
               className="text-lg font-medium text-gray-900"
+              style={{
+                textTransform: 'capitalize',
+                fontSize: '45px',
+                marginBottom: '50px',
+              }}
             >
               Order summary
             </h2>
 
             <dl className="mt-6 space-y-4">
               <div className="flex items-center justify-between">
-                <dt className="text-sm text-gray-600">Subtotal</dt>
-                <dd className="text-sm font-medium text-gray-900">
+                <dt
+                  className="text-sm text-gray-600"
+                  style={{ fontSize: '25px' }}
+                >
+                  Subtotal
+                </dt>
+                <dd
+                  className="text-sm font-medium text-gray-900"
+                  style={{ fontSize: '25px' }}
+                >
                   ₹ {sumTotalPrice}.00
                 </dd>
               </div>
               <div className="flex items-center justify-between border-t border-gray-200 pt-4"></div>
               {/* add coupon */}
-              <dt className="flex items-center text-sm text-gray-600">
+              <dt
+                className="flex items-center text-sm text-gray-600"
+                style={{ fontSize: '30px', marginBottom: '20px' }}
+              >
                 <span>Have coupon code? </span>
               </dt>
               {/* errr */}
@@ -198,14 +235,25 @@ export default function ShoppingCart() {
                 {loading ? (
                   <LoadingComponent />
                 ) : (
-                  <button className="inline-flex  text-center mt-4 items-center rounded border border-transparent bg-green-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    Apply coupon
-                  </button>
+                  <div style={{ textAlign: 'right' }}>
+                    <button
+                      className="inline-flex  text-center mt-4 items-center rounded border border-transparent bg-green-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      style={{ fontSize: '18px' }}
+                    >
+                      Apply coupon
+                    </button>
+                  </div>
                 )}
               </form>
 
-              <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                <dt className="text-base font-medium text-gray-900">
+              <div
+                className="flex items-center justify-between border-t border-gray-200 pt-4"
+                style={{ fontSize: '45px' }}
+              >
+                <dt
+                  className="text-base font-medium text-gray-900"
+                  style={{ fontSize: '35px', marginBottom: '20px' }}
+                >
                   Order total
                 </dt>
                 <dd className=" text-xl font-medium text-gray-900">

@@ -46,30 +46,54 @@ const AddShippingAddress = () => {
       {/* shipping details */}
       {user?.hasShippingAddress ? (
         <div className="mt-6">
-          <h3 className="text-lg font-medium text-gray-900">
+          <h3
+            className="text-lg font-medium text-gray-900"
+            style={{ fontSize: '35px', marginBottom: '30px' }}
+          >
             Shipping details
           </h3>
 
-          <p className="mt-1 text-sm text-gray-500">
+          <p
+            className="mt-1 text-sm text-gray-500"
+            style={{ fontSize: '30px', marginBottom: '30px' }}
+          >
             Double check your information.
           </p>
           <div>
-            <p className="mt-1 text-sm text-gray-500">
+            <p
+              className="mt-1 text-sm text-gray-500"
+              style={{ fontSize: '20px', marginBottom: '10px' }}
+            >
               First Name : {user?.shippingAddress?.firstName}
             </p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p
+              className="mt-1 text-sm text-gray-500"
+              style={{ fontSize: '20px', marginBottom: '10px' }}
+            >
               Last Name : {user?.shippingAddress?.lastName}
             </p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p
+              className="mt-1 text-sm text-gray-500"
+              style={{ fontSize: '20px', marginBottom: '10px' }}
+            >
               Address : {user?.shippingAddress?.address}
             </p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p
+              className="mt-1 text-sm text-gray-500"
+              style={{ fontSize: '20px', marginBottom: '10px' }}
+            >
               City : {user?.shippingAddress?.city}
             </p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p
+              className="mt-1 text-sm text-gray-500"
+              style={{ fontSize: '20px', marginBottom: '10px' }}
+            >
               Country : {user?.shippingAddress?.country}
             </p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p
+              className="mt-1 text-sm text-gray-500"
+              style={{ fontSize: '20px', marginBottom: '10px' }}
+            >
               phone : {user?.shippingAddress?.phone}
             </p>
           </div>

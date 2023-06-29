@@ -72,7 +72,10 @@ export default function OrderPayment() {
 
               {/* Order summary */}
               <div className="mt-10 lg:mt-0">
-                <h2 className="text-lg font-medium text-gray-900">
+                <h2
+                  className="text-lg font-medium text-gray-900"
+                  style={{ fontSize: '30px', marginBottom: '20px' }}
+                >
                   Order summary
                 </h2>
 
@@ -92,21 +95,36 @@ export default function OrderPayment() {
                         <div className="ml-6 flex flex-1 flex-col">
                           <div className="flex">
                             <div className="min-w-0 flex-1">
-                              <p className="mt-1 text-sm text-gray-500">
+                              <p
+                                className="mt-1 text-sm text-gray-500"
+                                style={{
+                                  fontSize: '20px',
+                                  textTransform: 'capitalize',
+                                }}
+                              >
                                 {product.name}
                               </p>
-                              <p className="mt-1 text-sm text-gray-500">
+                              <p
+                                className="mt-1 text-sm text-gray-500"
+                                style={{ fontSize: '20px' }}
+                              >
                                 {product.size}
                               </p>
-                              <p className="mt-1 text-sm text-gray-500">
+                              <p
+                                className="mt-1 text-sm text-gray-500"
+                                style={{ fontSize: '20px' }}
+                              >
                                 {product.color}
                               </p>
                             </div>
                           </div>
 
                           <div className="flex flex-1 items-end justify-between pt-2">
-                            <p className="mt-1 text-sm font-medium text-gray-900">
-                              ₹ {product?.price} X {product?.qty} =₹
+                            <p
+                              className="mt-1 text-sm font-medium text-gray-900"
+                              style={{ fontSize: '20px' }}
+                            >
+                              ₹ {product?.price} X {product?.qty} = ₹
                               {product?.totalPrice}
                             </p>
                           </div>
@@ -116,14 +134,27 @@ export default function OrderPayment() {
                   </ul>
                   <dl className="space-y-6 border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div className="flex items-center justify-between">
-                      <dt className="text-sm">Taxes</dt>
-                      <dd className="text-sm font-medium text-gray-900">
+                      <dt className="text-sm" style={{ fontSize: '25px' }}>
+                        Taxes
+                      </dt>
+                      <dd
+                        className="text-sm font-medium text-gray-900"
+                        style={{ fontSize: '20px' }}
+                      >
                         ₹0.00
                       </dd>
                     </div>
                     <div className="flex items-center justify-between border-t border-gray-200 pt-6">
-                      <dt className="text-base font-medium">Sub Total</dt>
-                      <dd className="text-base font-medium text-gray-900">
+                      <dt
+                        className="text-base font-medium"
+                        style={{ fontSize: '25px' }}
+                      >
+                        Sub Total
+                      </dt>
+                      <dd
+                        className="text-base font-medium text-gray-900"
+                        style={{ fontSize: '25px' }}
+                      >
                         ₹ {sumTotalPrice}.00
                       </dd>
                     </div>
