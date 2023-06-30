@@ -11,6 +11,9 @@ TrendCart allows admins to easily manage the inventory by adding products, speci
 
 With an array of features, including a dynamic product catalog and smooth payment processing through Stripe, TrendCart provides a seamless shopping experience for customers, making it the go-to destination for all their fashion needs.
 
+## For Full Project
+https://github.com/pavankumar130/TrendCart
+
 ## Available Scripts
 
 In the project directory, you can run:
