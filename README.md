@@ -1,5 +1,7 @@
 # About The Project
 
+# About The Project
+
 TrendCart is a dynamic and user-friendly e-commerce website that offers a wide range of products to its customers. Powered by a robust backend, the platform utilizes various packages like "bcryptjs" for secure password encryption, "cloudinary" for efficient image management, and "stripe" for smooth and secure payment transactions.
 
 The frontend of TrendCart is built using cutting-edge technologies such as React for seamless user interactions, while "react-redux" ensures smooth state management. The website's attractive design is enriched by components from "@headlessui/react" and "@heroicons/react," providing an engaging and intuitive user experience.
@@ -93,6 +95,13 @@ https://www.npmjs.com/package/react-select
 
 ### All Products With Filters Options
 
+### All Categories
+
+![categories](https://github.com/pavankumar130/TrendCart/assets/122618703/2dae4bb8-1de5-4540-a813-9ebacc345524)
+<br><br><br><hr>
+
+### All Products With Filters Options
+
 ![all products 1](https://github.com/pavankumar130/TrendCart/assets/122618703/a7077734-62fa-41f1-8f03-3cd9a0ed0dfe)
 
 ![all products 2](https://github.com/pavankumar130/TrendCart/assets/122618703/bd208a91-7b1f-4854-aad5-5b88f7218d72)
@@ -116,6 +125,29 @@ https://www.npmjs.com/package/react-select
 ### Payment
 
 ![stripe payment](https://github.com/pavankumar130/TrendCart-Back-End/assets/122618703/0bba7b9c-c707-486f-bf89-307af9315490)
+<br><br><br><hr>
+
+### Order Success
+
+### Add To Cart
+
+![add to cart](https://github.com/pavankumar130/TrendCart-Back-End/assets/122618703/a581e616-f7a9-459d-a9c4-b776e18ea069)
+<br><br><br><hr>
+
+### Cart
+
+![cart](https://github.com/pavankumar130/TrendCart-Back-End/assets/122618703/93ad24ba-781d-402b-941d-03f4091e15f5)
+<br><br><br><hr>
+
+### Order
+
+![order page](https://github.com/pavankumar130/TrendCart-Back-End/assets/122618703/e6fa7982-c356-4b7f-bb0c-ff820381831d)
+<br><br><br><hr>
+
+### Payment
+
+![stripe payment](https://github.com/pavankumar130/TrendCart-Back-End/assets/122618703/0bba7b9c-c707-486f-bf89-307af9315490)
+
 <br><br><br><hr>
 
 ### Order Success
