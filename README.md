@@ -1,6 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # About The Project
 TrendCart is a dynamic and user-friendly e-commerce website that offers a wide range of products to its customers. Powered by a robust backend, the platform utilizes various packages like "bcryptjs" for secure password encryption, "cloudinary" for efficient image management, and "stripe" for smooth and secure payment transactions.
@@ -26,10 +23,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -41,45 +34,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ### tailwindcss
 
@@ -105,3 +65,29 @@ https://www.npmjs.com/package/react-loading
 ### React-select
 
 https://www.npmjs.com/package/react-select
+
+### Home Page
+![home1](https://github.com/pavankumar130/TrendCart/assets/122618703/9eb0f4bc-2a9f-4869-b771-2c3472a9cc9a)
+
+![home2](https://github.com/pavankumar130/TrendCart/assets/122618703/6443ae05-003e-4f03-b767-9784b12c2f76)
+
+![home3](https://github.com/pavankumar130/TrendCart/assets/122618703/4e4149e0-6db1-4cd3-9103-6d6a71349ebe)
+
+![home4](https://github.com/pavankumar130/TrendCart/assets/122618703/1f1ea694-c0ec-4e4a-a02e-429a09b14383)
+
+<br><br><br><hr>
+
+### Admin Dashboard
+![admin](https://github.com/pavankumar130/TrendCart/assets/122618703/0b361aa3-cca9-4429-b55c-7600b4cf7665)
+
+![add](https://github.com/pavankumar130/TrendCart/assets/122618703/36ed824e-081e-45b1-9fa6-8b5ef33d8205)
+
+![stock manage](https://github.com/pavankumar130/TrendCart/assets/122618703/35c83803-e8e1-4d87-b053-72316f562467)
+<br><br><br><hr>
+### All Categories
+![categories](https://github.com/pavankumar130/TrendCart/assets/122618703/2dae4bb8-1de5-4540-a813-9ebacc345524)
+<br><br><br><hr>
+### All Products With Filters Options
+![all products 1](https://github.com/pavankumar130/TrendCart/assets/122618703/a7077734-62fa-41f1-8f03-3cd9a0ed0dfe)
+
+![all products 2](https://github.com/pavankumar130/TrendCart/assets/122618703/bd208a91-7b1f-4854-aad5-5b88f7218d72)
