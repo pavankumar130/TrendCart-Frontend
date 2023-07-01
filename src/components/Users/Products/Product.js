@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import Swal from 'sweetalert2'
-
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import {
   CurrencyDollarIcon,
   GlobeAmericasIcon,
@@ -75,14 +76,16 @@ const product = {
 
 const policies = [
   {
-    name: 'International delivery',
+    name: 'Rapid Dispatch',
     icon: GlobeAmericasIcon,
-    description: 'Get your order in 2 years',
+    description:
+      'Swiftly receive your order with lightning-fast delivery service.',
   },
   {
-    name: 'Loyalty rewards',
+    name: 'Cost-effectiveness',
     icon: CurrencyDollarIcon,
-    description: "Don't look at other tees",
+    description:
+      'Maximize worth: value-packed options for your hard-earned investment.',
   },
 ]
 
@@ -173,7 +176,10 @@ export default function Product() {
         <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
           <div className="lg:col-span-5 lg:col-start-8">
             <div className="flex justify-between">
-              <h1 className="text-xl font-medium text-gray-900">
+              <h1
+                className="text-xl font-medium text-gray-900"
+                style={{ textTransform: 'capitalize', fontSize: '25px' }}
+              >
                 {product?.name}
               </h1>
               <p className="text-xl font-medium text-gray-900">
@@ -210,6 +216,12 @@ export default function Product() {
                   <a
                     href="#"
                     className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                    style={{
+                      textTransform: 'capitalize',
+                      fontSize: '18px',
+                      marginTop: '20px',
+                      marginBottom: '20px',
+                    }}
                   >
                     {productDetails?.product?.totalReviews} total reviews
                   </a>
@@ -219,7 +231,10 @@ export default function Product() {
 
               <div className="mt-4">
                 <Link to={`/add-review/${product?._id}`}>
-                  <h3 className="text-sm font-medium text-blue-600">
+                  <h3
+                    className="text-sm font-medium text-blue-600"
+                    style={{ textTransform: 'capitalize', fontSize: '20px' }}
+                  >
                     Leave a review
                   </h3>
                 </Link>
@@ -228,24 +243,43 @@ export default function Product() {
           </div>
 
           {/* Image gallery */}
+
           <div className="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
             <h2 className="sr-only">Images</h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
-              {product?.images?.map((image) => (
-                <img
-                  key={image.id}
-                  src={image}
-                  alt={image.imageAlt}
-                  className={classNames(
-                    image.primary
-                      ? 'lg:col-span-2 lg:row-span-2'
-                      : 'hidden lg:block',
-                    'rounded-lg'
-                  )}
-                />
+            <Carousel
+              showStatus={false}
+              showArrows={false}
+              renderIndicator={(onClickHandler, isSelected, index, label) => {
+                if (isSelected) {
+                  return (
+                    <div
+                      key={index}
+                      className="selected-indicator"
+                      onClick={onClickHandler}
+                    ></div>
+                  )
+                }
+                return (
+                  <div
+                    key={index}
+                    className="indicator"
+                    onClick={onClickHandler}
+                  ></div>
+                )
+              }}
+              className="rounded-lg"
+            >
+              {product?.images?.map((image, index) => (
+                <div key={index} style={{ maxHeight: '650px' }}>
+                  <img
+                    src={image}
+                    alt={image.imageAlt}
+                    style={{ height: '100%' }}
+                  />
+                </div>
               ))}
-            </div>
+            </Carousel>
           </div>
 
           <div className="mt-8 lg:col-span-5">
@@ -347,8 +381,16 @@ export default function Product() {
 
             {/* Product details */}
             <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Description</h2>
-              <div className="prose prose-sm mt-4 text-gray-500">
+              <h2
+                className="text-sm font-medium text-gray-900"
+                style={{ textTransform: 'capitalize', fontSize: '25px' }}
+              >
+                Description
+              </h2>
+              <div
+                className="prose prose-sm mt-4 text-gray-500"
+                style={{ textTransform: 'capitalize', fontSize: '17px' }}
+              >
                 {product?.description}
               </div>
             </div>
@@ -370,11 +412,17 @@ export default function Product() {
                         className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400"
                         aria-hidden="true"
                       />
-                      <span className="mt-4 text-sm font-medium text-gray-900">
+                      <span
+                        className="mt-4 text-sm font-medium text-gray-900"
+                        style={{ fontSize: '18px' }}
+                      >
                         {policy.name}
                       </span>
                     </dt>
-                    <dd className="mt-1 text-sm text-gray-500">
+                    <dd
+                      className="mt-1 text-sm text-gray-500"
+                      style={{ fontSize: '15px' }}
+                    >
                       {policy.description}
                     </dd>
                   </div>
