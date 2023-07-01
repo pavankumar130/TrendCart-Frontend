@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
-import { Link, Outlet } from "react-router-dom";
+import { Fragment, useState } from 'react'
+import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Link, Outlet } from 'react-router-dom'
 import {
   Bars3CenterLeftIcon,
   BellIcon,
@@ -14,12 +14,13 @@ import {
   ShieldCheckIcon,
   UserGroupIcon,
   XMarkIcon,
-} from "@heroicons/react/24/outline";
-import logo from "../Navbar/logo3.png";
+} from '@heroicons/react/24/outline'
+import logo from '../Navbar/logo3.png'
+import user from './user.png'
 const ordersLinks = [
   {
-    name: "Dashboard",
-    href: "",
+    name: 'Dashboard',
+    href: '',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,8 +40,8 @@ const ordersLinks = [
     current: true,
   },
   {
-    name: "Customers",
-    href: "customers",
+    name: 'Customers',
+    href: 'customers',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -58,12 +59,12 @@ const ordersLinks = [
       </svg>
     ),
   },
-];
+]
 
 const productsLinks = [
   {
-    name: "Add Product",
-    href: "add-product",
+    name: 'Add Product',
+    href: 'add-product',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -84,17 +85,17 @@ const productsLinks = [
   },
 
   {
-    name: "Manage Stock",
-    href: "manage-products",
+    name: 'Manage Stock',
+    href: 'manage-products',
     icon: ScaleIcon,
     current: false,
   },
-];
+]
 
 const couponsLinks = [
   {
-    name: "Add Coupon",
-    href: "add-coupon",
+    name: 'Add Coupon',
+    href: 'add-coupon',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -113,8 +114,8 @@ const couponsLinks = [
     ),
   },
   {
-    name: "Manage Coupons",
-    href: "manage-coupon",
+    name: 'Manage Coupons',
+    href: 'manage-coupon',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -132,38 +133,38 @@ const couponsLinks = [
       </svg>
     ),
   },
-];
+]
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ')
 }
 
 const CategoryLinks = [
-  { name: "Add Category", href: "category-to-add", icon: CogIcon },
+  { name: 'Add Category', href: 'category-to-add', icon: CogIcon },
   {
-    name: "All Categories",
-    href: "manage-category",
+    name: 'All Categories',
+    href: 'manage-category',
     icon: QuestionMarkCircleIcon,
   },
-];
+]
 
 const colorsLinks = [
   {
-    name: "All Colors",
-    href: "all-colors",
+    name: 'All Colors',
+    href: 'all-colors',
     icon: QuestionMarkCircleIcon,
   },
-];
+]
 
 const brandsLinks = [
   {
-    name: "All Brands",
-    href: "all-brands",
+    name: 'All Brands',
+    href: 'all-brands',
     icon: QuestionMarkCircleIcon,
   },
-];
+]
 
 export default function AddminDashboard() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
     <>
@@ -251,11 +252,11 @@ export default function AddminDashboard() {
                           to={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-cyan-800 text-white"
-                              : "text-cyan-100 hover:text-white hover:bg-cyan-600",
-                            "group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                              ? 'bg-cyan-800 text-white'
+                              : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                            'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
                           )}
-                          aria-current={item.current ? "page" : undefined}
+                          aria-current={item.current ? 'page' : undefined}
                         >
                           <item.icon
                             className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
@@ -381,11 +382,11 @@ export default function AddminDashboard() {
                     to={item.href}
                     className={classNames(
                       item.current
-                        ? "bg-cyan-800 text-white"
-                        : "text-cyan-100 hover:text-white hover:bg-cyan-600",
-                      "group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                        ? 'bg-cyan-800 text-white'
+                        : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                      'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
                     )}
-                    aria-current={item.current ? "page" : undefined}
+                    aria-current={item.current ? 'page' : undefined}
                   >
                     <item.icon
                       className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
@@ -491,18 +492,18 @@ export default function AddminDashboard() {
                     <div className="flex items-center">
                       <img
                         className="hidden h-16 w-16 rounded-full sm:block"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
-                        alt=""
+                        src={user}
+                        alt="admin"
                       />
                       <div>
                         <div className="flex items-center">
                           <img
                             className="h-16 w-16 rounded-full sm:hidden"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
+                            src={user}
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
-                            Good morning, Emilia Birch
+                            Good morning, Pavan
                           </h1>
                         </div>
                         <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
@@ -585,5 +586,5 @@ export default function AddminDashboard() {
         </div>
       </div>
     </>
-  );
+  )
 }

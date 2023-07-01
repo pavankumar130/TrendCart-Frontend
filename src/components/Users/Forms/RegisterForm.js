@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { registerUserAction } from "../../../redux/slices/users/usersSlice";
-import ErrorMsg from "../../ErrorMsg/ErrorMsg";
-import LoadingComponent from "../../LoadingComp/LoadingComponent";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { registerUserAction } from '../../../redux/slices/users/usersSlice'
+import ErrorMsg from '../../ErrorMsg/ErrorMsg'
+import LoadingComponent from '../../LoadingComp/LoadingComponent'
 
 const RegisterForm = () => {
   //dispatch
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   //dispatch
   const [formData, setFormData] = useState({
-    fullname: "",
-    email: "",
-    password: "",
-  });
+    fullname: '',
+    email: '',
+    password: '',
+  })
   //---Destructuring---
-  const { fullname, email, password } = formData;
+  const { fullname, email, password } = formData
   //---onchange handler----
   const onChangeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   //---onsubmit handler----
   const onSubmitHandler = (e) => {
-    e.preventDefault();
-    dispatch(registerUserAction({ fullname, email, password }));
-  };
+    e.preventDefault()
+    dispatch(registerUserAction({ fullname, email, password }))
+  }
   //select store data
-  const { user, error, loading } = useSelector((state) => state?.users);
+  const { user, error, loading } = useSelector((state) => state?.users)
   //redirect
   useEffect(() => {
     if (user) {
-      window.location.href = "/login";
+      window.location.href = '/login'
     }
-  }, [user]);
+  }, [user])
   return (
     <>
       <section className="relative overflow-x-hidden">
@@ -40,12 +40,17 @@ const RegisterForm = () => {
           <div className="flex flex-wrap items-center">
             <div className="w-full lg:w-2/6 px-4 mb-12 lg:mb-0">
               <div className="py-20 text-center">
-                <h3 className="mb-8 text-4xl md:text-5xl font-bold font-heading">
-                  Signing up with social is super quick
+                <h3
+                  className="mb-8 text-4xl md:text-5xl font-bold font-heading"
+                  style={{ textTransform: 'capitalize', fontSize: '45px' }}
+                >
+                  sign-up
                 </h3>
                 {/* errr */}
                 {error && <ErrorMsg message={error?.message} />}
-                <p className="mb-10">Please, do not hesitate</p>
+                <p className="mb-10" style={{ fontSize: '23px' }}>
+                  Quick, hassle-free way to create an account.
+                </p>
                 <form onSubmit={onSubmitHandler}>
                   <input
                     name="fullname"
@@ -87,12 +92,12 @@ const RegisterForm = () => {
           className="hidden lg:block lg:absolute top-0 bottom-0 right-0 lg:w-3/6 bg-center bg-cover bg-no-repeat"
           style={{
             backgroundImage:
-              'url("https://cdn.pixabay.com/photo/2017/03/29/04/47/high-heels-2184095_1280.jpg")',
+              'url("https://images.unsplash.com/photo-1607000975574-0b425df6975a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80")',
           }}
         />
       </section>
     </>
-  );
-};
+  )
+}
 
-export default RegisterForm;
+export default RegisterForm

@@ -1,19 +1,19 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserProfileAction } from "../../../redux/slices/users/usersSlice";
-import CustomerDetails from "./CustomerDetails";
-import ShippingAddressDetails from "./ShippingAddressDetails";
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUserProfileAction } from '../../../redux/slices/users/usersSlice'
+import CustomerDetails from './CustomerDetails'
+import ShippingAddressDetails from './ShippingAddressDetails'
 
 export default function CustomerProfile() {
   //dispatch
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getUserProfileAction());
-  }, [dispatch]);
+    dispatch(getUserProfileAction())
+  }, [dispatch])
   //get data from store
-  const { error, loading, profile } = useSelector((state) => state?.users);
+  const { error, loading, profile } = useSelector((state) => state?.users)
   //get orders
-  const orders = profile?.user?.orders;
+  const orders = profile?.user?.orders
 
   return (
     <>
@@ -45,48 +45,83 @@ export default function CustomerProfile() {
                     <div className="flex sm:items-baseline sm:space-x-4">
                       <dl className="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
                         <div>
-                          <dt className="font-medium text-gray-900">
+                          <dt
+                            className="font-medium text-gray-900"
+                            style={{ fontSize: '18px' }}
+                          >
                             Order number
                           </dt>
-                          <dd className="mt-1 text-gray-500">
+                          <dd
+                            className="mt-1 text-gray-500"
+                            style={{ fontSize: '18px' }}
+                          >
                             {order?.orderNumber}
                           </dd>
                         </div>
                         <div className="hidden sm:block">
-                          <dt className="font-medium text-gray-900">
+                          <dt
+                            className="font-medium text-gray-900"
+                            style={{ fontSize: '18px' }}
+                          >
                             Date placed
                           </dt>
-                          <dd className="mt-1 text-gray-500">
+                          <dd
+                            className="mt-1 text-gray-500"
+                            style={{ fontSize: '18px' }}
+                          >
                             <time>
                               {new Date(order?.createdAt).toDateString()}
                             </time>
                           </dd>
                         </div>
                         <div>
-                          <dt className="font-medium text-gray-900">
+                          <dt
+                            className="font-medium text-gray-900"
+                            style={{ fontSize: '18px' }}
+                          >
                             Total amount
                           </dt>
-                          <dd className="mt-1 font-medium text-gray-900">
-                            ${order?.totalPrice}
+                          <dd
+                            className="mt-1 font-medium text-gray-900"
+                            style={{ fontSize: '18px' }}
+                          >
+                            ₹{order?.totalPrice}
                           </dd>
                         </div>
                       </dl>
                     </div>
 
-                    <p className="text-sm text-gray-600">
-                      Status:{" "}
+                    <p
+                      className="text-sm text-gray-600"
+                      style={{ fontSize: '18px' }}
+                    >
+                      Status:{' '}
                       <time
                         dateTime="2021-03-22"
-                        className="font-medium text-gray-900">
+                        className="font-medium text-gray-900"
+                        style={{
+                          fontSize: '18px',
+                          textTransform: 'capitalize',
+                        }}
+                      >
                         {order?.status}
                       </time>
                     </p>
                     {/* payment method */}
                     <div>
-                      <dt className="font-medium text-gray-900">
+                      <dt
+                        className="font-medium text-gray-900"
+                        style={{ fontSize: '18px' }}
+                      >
                         Payment Method
                       </dt>
-                      <dd className="mt-1 font-medium text-gray-900">
+                      <dd
+                        className="mt-1 font-medium text-gray-900"
+                        style={{
+                          fontSize: '18px',
+                          textTransform: 'capitalize',
+                        }}
+                      >
                         {order?.paymentMethod}
                       </dd>
                     </div>
@@ -100,7 +135,8 @@ export default function CustomerProfile() {
                       {order?.orderItems?.map((product) => (
                         <div
                           key={product.id}
-                          className="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
+                          className="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border"
+                        >
                           <div className="py-6 px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8">
                             <div className="sm:flex lg:col-span-7">
                               <div className="aspect-w-1 aspect-h-1 w-full flex-shrink-0 overflow-hidden rounded-lg sm:aspect-none sm:h-40 sm:w-40">
@@ -113,12 +149,26 @@ export default function CustomerProfile() {
 
                               <div className="mt-6 sm:mt-0 sm:ml-6">
                                 <h3 className="text-base font-medium text-gray-900">
-                                  <a href={product.href}>{product.name}</a>
+                                  <a
+                                    href={product.href}
+                                    style={{
+                                      textTransform: 'capitalize',
+                                      fontSize: '18px',
+                                    }}
+                                  >
+                                    {product.name}
+                                  </a>
                                 </h3>
-                                <p className="mt-2 text-sm font-medium text-gray-900">
-                                  ${product.discountedPrice}
+                                <p
+                                  className="mt-2 text-sm font-medium text-gray-900"
+                                  style={{ fontSize: '18px' }}
+                                >
+                                  ₹{product.price}
                                 </p>
-                                <p className="mt-3 text-sm text-gray-500">
+                                <p
+                                  className="mt-3 text-sm text-gray-500"
+                                  style={{ fontSize: '15px' }}
+                                >
                                   {product.description}
                                 </p>
                               </div>
@@ -132,12 +182,14 @@ export default function CustomerProfile() {
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg">
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
                               <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
                                 stroke-width="2"
-                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                              ></path>
                             </svg>
                             <p className="ml-2 text-sm font-medium text-gray-500">
                               Payment Status: {order.paymentStatus}
@@ -154,9 +206,9 @@ export default function CustomerProfile() {
                 shippingAddress={profile?.user?.shippingAddress}
               />
             </>
-          );
+          )
         })
       )}
     </>
-  );
+  )
 }

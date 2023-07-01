@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loginUserAction } from "../../../redux/slices/users/usersSlice";
-import ErrorMsg from "../../ErrorMsg/ErrorMsg";
-import LoadingComponent from "../../LoadingComp/LoadingComponent";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginUserAction } from '../../../redux/slices/users/usersSlice'
+import ErrorMsg from '../../ErrorMsg/ErrorMsg'
+import LoadingComponent from '../../LoadingComp/LoadingComponent'
 
 const Login = () => {
   //dispatch
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [formData, setFormData] = useState({
-    email: "admin@gmail.com",
-    password: "12345",
-  });
+    email: 'admin@gmail.com',
+    password: '12345',
+  })
   //---Destructuring---
-  const { email, password } = formData;
+  const { email, password } = formData
   //---onchange handler----
   const onChangeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   //---onsubmit handler----
   const onSubmitHandler = (e) => {
-    e.preventDefault();
-    dispatch(loginUserAction({ email, password }));
-  };
+    e.preventDefault()
+    dispatch(loginUserAction({ email, password }))
+  }
 
   //get data from store
   const { error, loading, userInfo } = useSelector(
     (state) => state?.users?.userAuth
-  );
+  )
 
   //redirect
   useEffect(() => {
     if (userInfo?.userFound) {
-      window.location.href = "/";
+      window.location.href = '/'
     }
-  }, [userInfo]);
+  }, [userInfo])
   return (
     <>
       <section className="py-20 bg-gray-100 overflow-x-hidden">
@@ -46,7 +46,10 @@ const Login = () => {
                 <h3 className="mb-8 text-4xl md:text-5xl font-bold font-heading">
                   Login to your account
                 </h3>
-                <p className="mb-10 font-semibold font-heading">
+                <p
+                  className="mb-10 font-semibold font-heading"
+                  style={{ fontSize: '20px' }}
+                >
                   Happy to see you again
                 </p>
                 {/* err */}
@@ -57,7 +60,10 @@ const Login = () => {
                 >
                   <div className="w-full md:w-1/2 px-4 mb-8 md:mb-12">
                     <label>
-                      <h4 className="mb-5 text-gray-400 uppercase font-bold font-heading">
+                      <h4
+                        className="mb-5 text-gray-400 uppercase font-bold font-heading"
+                        style={{ fontSize: '18px' }}
+                      >
                         Your Email
                       </h4>
                       <input
@@ -71,7 +77,10 @@ const Login = () => {
                   </div>
                   <div className="w-full md:w-1/2 px-4 mb-12">
                     <label>
-                      <h4 className="mb-5 text-gray-400 uppercase font-bold font-heading">
+                      <h4
+                        className="mb-5 text-gray-400 uppercase font-bold font-heading"
+                        style={{ fontSize: '18px' }}
+                      >
                         Password
                       </h4>
                       <input
@@ -100,14 +109,14 @@ const Login = () => {
               className="w-full md:w-2/6 h-128 md:h-auto flex items-center lg:items-end px-4 pb-20 bg-cover bg-no-repeat"
               style={{
                 backgroundImage:
-                  'url("https://cdn.pixabay.com/photo/2017/03/29/04/47/high-heels-2184095_1280.jpg")',
+                  'url("https://cdn.iconscout.com/icon/premium/png-512-thumb/login-76-477887.png?f=avif&w=256")',
               }}
             ></div>
           </div>
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
