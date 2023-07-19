@@ -1,112 +1,111 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
-import { fetchBrandsAction } from "../../../redux/slices/categories/brandsSlice";
-import { fetchCategoriesAction } from "../../../redux/slices/categories/categoriesSlice";
-import { fetchColorsAction } from "../../../redux/slices/categories/colorsSlice";
-import { createProductAction } from "../../../redux/slices/products/productSlices";
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated'
+import { fetchBrandsAction } from '../../../redux/slices/categories/brandsSlice'
+import { fetchCategoriesAction } from '../../../redux/slices/categories/categoriesSlice'
+import { fetchColorsAction } from '../../../redux/slices/categories/colorsSlice'
+import { createProductAction } from '../../../redux/slices/products/productSlices'
 
-import ErrorMsg from "../../ErrorMsg/ErrorMsg";
-import LoadingComponent from "../../LoadingComp/LoadingComponent";
-import SuccessMsg from "../../SuccessMsg/SuccessMsg";
+import ErrorMsg from '../../ErrorMsg/ErrorMsg'
+import LoadingComponent from '../../LoadingComp/LoadingComponent'
+import SuccessMsg from '../../SuccessMsg/SuccessMsg'
 
 //animated components for react-select
-const animatedComponents = makeAnimated();
+const animatedComponents = makeAnimated()
 
 export default function AddProduct() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   //files
-  const [files, setFiles] = useState([]);
-  const [fileErrs, setFileErrs] = useState([]);
+  const [files, setFiles] = useState([])
+  const [fileErrs, setFileErrs] = useState([])
   //file handlechange
   const fileHandleChange = (event) => {
-    const newFiles = Array.from(event.target.files);
+    const newFiles = Array.from(event.target.files)
     //validation
-    const newErrs = [];
+    const newErrs = []
     newFiles.forEach((file) => {
       if (file?.size > 1000000) {
-        newErrs.push(`${file?.name} is too large`);
+        newErrs.push(`${file?.name} is too large`)
       }
-      if (!file?.type?.startsWith("image/")) {
-        newErrs.push(`${file?.name} is not an image`);
+      if (!file?.type?.startsWith('image/')) {
+        newErrs.push(`${file?.name} is not an image`)
       }
-    });
-    setFiles(newFiles);
-    setFileErrs(newErrs);
-  };
+    })
+    setFiles(newFiles)
+    setFileErrs(newErrs)
+  }
   //Sizes
-  const sizes = ["S", "M", "L", "XL", "XXL"];
-  const [sizeOption, setSizeOption] = useState([]);
+  const sizes = ['S', 'M', 'L', 'XL', 'XXL']
+  const [sizeOption, setSizeOption] = useState([])
   const handleSizeChange = (sizes) => {
-    setSizeOption(sizes);
-  };
+    setSizeOption(sizes)
+  }
   //converted sizes
   const sizeOptionsCoverted = sizes?.map((size) => {
     return {
       value: size,
       label: size,
-    };
-  });
+    }
+  })
 
   //categories
   useEffect(() => {
-    dispatch(fetchCategoriesAction());
-  }, [dispatch]);
+    dispatch(fetchCategoriesAction())
+  }, [dispatch])
   //select data from store
-  const { categories } = useSelector((state) => state?.categories?.categories);
+  const { categories } = useSelector((state) => state?.categories?.categories)
 
   //brands
   useEffect(() => {
-    dispatch(fetchBrandsAction());
-  }, [dispatch]);
+    dispatch(fetchBrandsAction())
+  }, [dispatch])
   //select data from store
   const {
     brands: { brands },
-  } = useSelector((state) => state?.brands);
+  } = useSelector((state) => state?.brands)
   //colors
-  const [colorsOption, setColorsOption] = useState([]);
+  const [colorsOption, setColorsOption] = useState([])
 
   const {
     colors: { colors },
-  } = useSelector((state) => state?.colors);
+  } = useSelector((state) => state?.colors)
   useEffect(() => {
-    dispatch(fetchColorsAction());
-  }, [dispatch]);
+    dispatch(fetchColorsAction())
+  }, [dispatch])
 
   const handleColorChange = (colors) => {
-    setColorsOption(colors);
-  };
+    setColorsOption(colors)
+  }
   //converted colors
   const colorsCoverted = colors?.map((color) => {
     return {
       value: color?.name,
       label: color?.name,
-    };
-  });
+    }
+  })
 
   //---form data---
   const [formData, setFormData] = useState({
-    name: "",
-    address: "",
-    district: "",
-    phone: "",
-  });
+    name: '',
+    address: '',
+    district: '',
+    phone: '',
+  })
 
   //onChange
   const handleOnChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   //get product from store
   const { product, isAdded, loading, error } = useSelector(
     (state) => state?.products
-  );
+  )
 
   //onSubmit
   const handleOnSubmit = (e) => {
-    e.preventDefault();
-    console.log(fileErrs);
+    e.preventDefault()
     //dispatch
     dispatch(
       createProductAction({
@@ -115,21 +114,21 @@ export default function AddProduct() {
         colors: colorsOption?.map((color) => color.label),
         sizes: sizeOption?.map((size) => size?.label),
       })
-    );
+    )
 
     //reset form data
     setFormData({
-      name: "",
-      description: "",
-      category: "",
-      sizes: "",
-      brand: "",
-      colors: "",
-      images: "",
-      price: "",
-      totalQty: "",
-    });
-  };
+      name: '',
+      description: '',
+      category: '',
+      sizes: '',
+      brand: '',
+      colors: '',
+      images: '',
+      price: '',
+      totalQty: '',
+    })
+  }
 
   return (
     <>
@@ -359,5 +358,5 @@ export default function AddProduct() {
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -1,30 +1,30 @@
-import { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import LoadingComponent from "../../LoadingComp/LoadingComponent";
-import ErrorMsg from "../../ErrorMsg/ErrorMsg";
-import SuccessMsg from "../../SuccessMsg/SuccessMsg";
-import { createCouponAction } from "../../../redux/slices/coupons/couponsSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from 'react'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import LoadingComponent from '../../LoadingComp/LoadingComponent'
+import ErrorMsg from '../../ErrorMsg/ErrorMsg'
+import SuccessMsg from '../../SuccessMsg/SuccessMsg'
+import { createCouponAction } from '../../../redux/slices/coupons/couponsSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function AddCoupon() {
   //dispatch
-  const dispatch = useDispatch();
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const dispatch = useDispatch()
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
 
   const [formData, setFormData] = useState({
-    code: "",
-    discount: "",
-  });
+    code: '',
+    discount: '',
+  })
 
   //---onHandleChange---
   const onHandleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
   //---onHandleSubmit---
   const onHandleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     dispatch(
       createCouponAction({
         discount: formData?.discount,
@@ -32,18 +32,17 @@ export default function AddCoupon() {
         startDate,
         endDate,
       })
-    );
+    )
     //reset form
     setFormData({
-      code: "",
-      discount: "",
-    });
-  };
+      code: '',
+      discount: '',
+    })
+  }
   //---coupon from store---
   const { loading, isAdded, error, coupon } = useSelector(
     (state) => state?.coupons
-  );
-  console.log(loading, isAdded, error, coupon);
+  )
   return (
     <>
       {error && <ErrorMsg message={error?.message} />}
@@ -123,7 +122,8 @@ export default function AddCoupon() {
               ) : (
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
                   Add Coupon
                 </button>
               )}
@@ -132,5 +132,5 @@ export default function AddCoupon() {
         </div>
       </div>
     </>
-  );
+  )
 }

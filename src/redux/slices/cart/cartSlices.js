@@ -38,7 +38,6 @@ export const getCartItemsFromLocalStorageAction = createAsyncThunk(
 export const changeOrderItemQty = createAsyncThunk(
   'cart/change-item-qty',
   async ({ productId, qty }) => {
-    console.log(productId, qty)
     const cartItems = localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))
       : []

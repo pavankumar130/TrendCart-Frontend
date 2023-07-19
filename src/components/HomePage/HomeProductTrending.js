@@ -22,7 +22,6 @@ const HomeProductTrending = () => {
     error,
     loading,
   } = useSelector((state) => state?.products)
-  console.log(products)
   const trendingProducts = []
   return (
     <>

@@ -78,7 +78,6 @@ export default function ProductsFilters() {
   const [price, setPrice] = useState('')
   const [brand, setBrand] = useState('')
   const [size, setSize] = useState('')
-  console.log(color)
   //build up url
   let productUrl = `${baseURL}/products`
   let tempUrl = `${baseURL}/products`
@@ -129,7 +128,6 @@ export default function ProductsFilters() {
     }
   }
 
-  console.log(category)
   //fetch all products
   useEffect(() => {
     dispatch(
