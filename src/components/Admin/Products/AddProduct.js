@@ -198,7 +198,11 @@ export default function AddProduct() {
                 >
                   <option>-- Select Category --</option>
                   {categories?.map((category) => (
-                    <option key={category?._id} value={category?.name}>
+                    <option
+                      key={category?._id}
+                      value={category?.name}
+                      style={{ textTransform: 'capitalize' }}
+                    >
                       {category.name}
                     </option>
                   ))}
@@ -218,7 +222,11 @@ export default function AddProduct() {
                 >
                   <option>-- Select Brand --</option>
                   {brands?.map((brand) => (
-                    <option key={brand?._id} value={brand?.name}>
+                    <option
+                      key={brand?._id}
+                      value={brand?.name}
+                      style={{ textTransform: 'capitalize' }}
+                    >
                       {brand.name}
                     </option>
                   ))}
@@ -302,6 +310,7 @@ export default function AddProduct() {
                     value={formData.price}
                     onChange={handleOnChange}
                     type="number"
+                    min="0"
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
@@ -318,6 +327,7 @@ export default function AddProduct() {
                     value={formData.totalQty}
                     onChange={handleOnChange}
                     type="number"
+                    min="0"
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
