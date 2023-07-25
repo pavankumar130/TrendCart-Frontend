@@ -15,7 +15,7 @@ import {
   UserGroupIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import logo from '../Navbar/logo3.png'
+import logo from '../Navbar/trendcart-logo.png'
 import user from './user.png'
 const ordersLinks = [
   {
@@ -506,7 +506,7 @@ export default function AddminDashboard() {
                             alt=""
                           />
                           <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
-                            Good morning, Pavan
+                            Good morning, Admin
                           </h1>
                         </div>
                         <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
