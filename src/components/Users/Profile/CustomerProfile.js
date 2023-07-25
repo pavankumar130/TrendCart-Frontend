@@ -40,7 +40,7 @@ export default function CustomerProfile() {
           return (
             <>
               <div className="bg-gray-50">
-                <div className="mx-auto max-w-2xl pt-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                <div className="mx-auto max-w-7xl pt-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
                   <div className="space-y-2 px-4 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 sm:px-0">
                     <div className="flex sm:items-baseline sm:space-x-4">
                       <dl className="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
