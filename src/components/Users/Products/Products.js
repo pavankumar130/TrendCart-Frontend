@@ -23,6 +23,11 @@ const Products = ({ products }) => {
                     className="w-full h-64 object-cover"
                     src={product?.images[0]}
                     alt
+                    style={{
+                      maxHeight: '60%',
+                      maxWidth: '60%',
+                      marginLeft: '20%',
+                    }}
                   />
                 </Link>
                 <div className="px-6 pb-6 mt-8">

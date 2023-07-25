@@ -435,7 +435,10 @@ export default function ProductsFilters() {
                                     type="radio"
                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                   />
-                                  <label className="ml-3 min-w-0 flex-1 text-gray-500">
+                                  <label
+                                    className="ml-3 min-w-0 flex-1 text-gray-500"
+                                    style={{ textTransform: 'capitalize' }}
+                                  >
                                     {brand?.name}
                                   </label>
                                 </div>
@@ -736,7 +739,10 @@ export default function ProductsFilters() {
                                 type="radio"
                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                               />
-                              <label className="ml-3 min-w-0 flex-1 text-gray-500">
+                              <label
+                                className="ml-3 min-w-0 flex-1 text-gray-500"
+                                style={{ textTransform: 'capitalize' }}
+                              >
                                 {brand?.name}
                               </label>
                             </div>

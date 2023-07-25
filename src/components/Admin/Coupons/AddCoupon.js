@@ -38,6 +38,9 @@ export default function AddCoupon() {
       code: '',
       discount: '',
     })
+    setTimeout(function () {
+      window.location.reload()
+    }, 3000)
   }
   //---coupon from store---
   const { loading, isAdded, error, coupon } = useSelector(
@@ -49,7 +52,7 @@ export default function AddCoupon() {
       {isAdded && (
         <SuccessMsg
           message="
-       Bravo, coupon created successfuly
+        coupon created successfuly
       "
         />
       )}
