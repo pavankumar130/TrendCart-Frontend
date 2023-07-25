@@ -34,28 +34,22 @@ const sortOptions = [
 
 const allPrice = [
   {
-    amount: '0 - 50',
+    amount: '0 - 1000',
   },
   {
-    amount: '50 - 100',
+    amount: '1000 - 3000',
   },
   {
-    amount: '100 - 150',
+    amount: '3000 - 7500',
   },
   {
-    amount: '150 - 200',
+    amount: '7500 - 10000',
   },
   {
-    amount: '200 - 250',
+    amount: '10000 - 20000',
   },
   {
-    amount: '250 - 300',
-  },
-  {
-    amount: '300 - 350',
-  },
-  {
-    amount: '350 - 400',
+    amount: '20000 - 50000',
   },
 ]
 

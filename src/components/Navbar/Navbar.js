@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import baseURL from '../../utils/baseURL'
-import logo from './logo.png'
+import logo from './flex-logo.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCategoriesAction } from '../../redux/slices/categories/categoriesSlice'
 import { getCartItemsFromLocalStorageAction } from '../../redux/slices/cart/cartSlices'
@@ -395,6 +395,7 @@ export default function Navbar() {
             background: '#0E2954',
             marginBottom: '3px',
             padding: '10px',
+            textTransform: 'capitalize',
           }}
         >
           <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
