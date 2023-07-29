@@ -46,7 +46,7 @@ const HomeProductTrending = () => {
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10  sm:grid-cols-3">
-            {products?.slice(0, 6).map((product) => (
+            {products?.slice(0, 12).map((product) => (
               <Link
                 to={`/products/${product._id}`}
                 key={product.id}
