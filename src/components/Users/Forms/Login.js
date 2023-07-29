@@ -48,7 +48,7 @@ const Login = () => {
                 </h3>
                 <p
                   className="mb-10 font-semibold font-heading"
-                  style={{ fontSize: '20px' }}
+                  style={{ fontSize: '20px', textTransform: 'capitalize' }}
                 >
                   Happy to see you again
                 </p>
