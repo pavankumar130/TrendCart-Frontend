@@ -44,12 +44,14 @@ const RegisterForm = () => {
                   className="mb-8 text-4xl md:text-5xl font-bold font-heading"
                   style={{ textTransform: 'capitalize', fontSize: '45px' }}
                 >
-                  sign-up
+                  Register with ease!
                 </h3>
                 {/* errr */}
                 {error && <ErrorMsg message={error?.message} />}
                 <p className="mb-10" style={{ fontSize: '23px' }}>
-                  Quick, hassle-free way to create an account.
+                  A seamless and quick process to create your account on our
+                  flex web app. Get started hassle-free and explore a world of
+                  online shopping.
                 </p>
                 <form onSubmit={onSubmitHandler}>
                   <input
@@ -91,8 +93,7 @@ const RegisterForm = () => {
         <div
           className="hidden lg:block lg:absolute top-0 bottom-0 right-0 lg:w-3/6 bg-center bg-cover bg-no-repeat"
           style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1607000975574-0b425df6975a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80")',
+            backgroundImage: `url('/2784497.jpg')`,
           }}
         />
       </section>

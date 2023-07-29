@@ -109,7 +109,7 @@ const Login = () => {
               className="w-full md:w-2/6 h-128 md:h-auto flex items-center lg:items-end px-4 pb-20 bg-cover bg-no-repeat"
               style={{
                 backgroundImage:
-                  'url("https://cdn.iconscout.com/icon/premium/png-512-thumb/login-76-477887.png?f=avif&w=256")',
+                  'url("https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=740&t=st=1690649376~exp=1690649976~hmac=4e1fc49ed5fefde7d11fa866bcbcc9bd23267f6a40a661ed8370120648b1080b")',
               }}
             ></div>
           </div>
