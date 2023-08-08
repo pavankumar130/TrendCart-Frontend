@@ -203,6 +203,25 @@ export default function Example() {
                 </div>
               ))}
             </div>
+            <div
+              style={{
+                textAlign: 'center',
+                marginTop: '40px',
+                color: 'green',
+                fontSize: '20px',
+              }}
+            >
+              <h1>
+                Click{' '}
+                <a
+                  href="mailto:20bcs130@iiitdmj.ac.in"
+                  style={{ color: 'blue' }}
+                >
+                  here
+                </a>{' '}
+                to reach us out.
+              </h1>
+            </div>
           </div>
         </section>
       </main>
