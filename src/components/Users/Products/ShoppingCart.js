@@ -51,8 +51,9 @@ export default function ShoppingCart() {
 
   //check if coupon found
   if (coupon) {
-    sumTotalPrice =
+    sumTotalPrice = Math.round(
       sumTotalPrice - (sumTotalPrice * coupon?.coupon?.discount) / 100
+    )
   }
   //price of the product - (price of product x discount/100)
   //remove cart  Item handler
