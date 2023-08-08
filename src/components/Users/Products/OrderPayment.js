@@ -11,7 +11,12 @@ export default function OrderPayment() {
   //get data from location
   const location = useLocation()
   const { sumTotalPrice } = location.state
-  const calculateTotalDiscountedPrice = () => {}
+  const { coupon } = useSelector((state) => state?.coupons)
+  const calculateTotalDiscountedPrice = () => {
+    console.log(coupon)
+  }
+
+  calculateTotalDiscountedPrice()
   //dispatch
   const dispatch = useDispatch()
   useEffect(() => {
